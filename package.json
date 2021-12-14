@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "wdio": "npx wdio wdio.conf.js --spec",
         "test": "npm run clean && wdio wdio.conf.js && npm run report",
         "report": "allure generate --clean",
         "clean": "rm -rf allure-results && rm -rf allure-report"
