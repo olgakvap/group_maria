@@ -8,8 +8,8 @@ describe('Creating Publication', () => {
         //await expect(PublicationsPage.pageTitle).toHaveTextContaining(
          //   'publications').true;
         await PublicationsPage.btnAddPublication.click();
-        await CreatePublicationPage.inputTitle.setValue("Google QA Engineer Position");
-        await CreatePublicationPage.inputDescription.setValue("New Position");
+        await CreatePublicationPage.inputTitle.setValue("Google QA Engineer Position2");
+        await CreatePublicationPage.inputDescription.setValue("New Position2");
         await CreatePublicationPage.textareaContent.setValue("Bachelor's degree in a related field or equivalent practical experience.");
         await CreatePublicationPage.btnSavePublication.click();
         await expect(PublicationsPage.pageTitle).toBeExisting().true;
