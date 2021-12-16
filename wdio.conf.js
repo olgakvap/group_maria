@@ -26,7 +26,7 @@ exports.config = {
     services: ['chromedriver', 'geckodriver', 'safaridriver'],
     safariDriverArgs: ['-p 4444'],
 
-    logLevel: 'info',
+    logLevel: 'silent',
     bail: 0,
     baseUrl: url,
 

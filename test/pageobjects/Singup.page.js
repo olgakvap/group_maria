@@ -1,6 +1,6 @@
 const Page = require('./Page');
 
-class SigninPage extends Page {
+class SignupPage extends Page {
     get inputEmail() {
         return $('#email');
     }
@@ -13,8 +13,8 @@ class SigninPage extends Page {
         return $('button[type="submit"]');
     }
 
-    get containerMessage() {
-        return $('#root');
+    get messageUserRegistered() {
+        return $('//div[contains(text(),\'Registration successful!\')]');
     }
 
     async signup (email, password) {
@@ -29,4 +29,4 @@ class SigninPage extends Page {
     }
 }
 
-module.exports = new SigninPage();
+module.exports = new SignupPage();

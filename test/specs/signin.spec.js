@@ -1,10 +1,13 @@
-const SigninPage = require('../pageobjects/Singin.page');
+const SignupPage = require('../pageobjects/Singup.page');
 
-describe('SIGNIN PAGE', () => {
-    it('Should signin with valid credentials', async () => {
-        await SigninPage.signup('user2@user.com', 'superUser123!');
-        await expect(SigninPage.containerMessage).toBeExisting().true;
-        await expect(SigninPage.containerMessage).toHaveTextContaining(
-            'Registration successful!').true;
+describe('SIGNUP PAGE', () => {
+
+    it('Should signup with valid credentials', async () => {
+        await SignupPage.signup(`user${Date.now()}@user.com`, 'superUser123!');
+        await expect(SignupPage.messageUserRegistered).toBeExisting().true;
+        console.log(await SignupPage.messageUserRegistered.getText());
+        await expect(await SignupPage.messageUserRegistered.getText()).toEqual(
+            'Registration successful!');
     });
+
 });
