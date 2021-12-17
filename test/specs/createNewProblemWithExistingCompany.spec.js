@@ -20,8 +20,7 @@ describe('Creating Problem', () => {
         await CreateProblemPage.inputContent.setValue("any text");
         await CreateProblemPage.btnSave.click();
 
-        const firstRecord = (await ProblemsPage.firstRecord.getText());
-        await expect(firstRecord.hasOwnProperty(inputValueTitle));
+        await expect(ProblemsPage.firstRecord.getText().hasOwnProperty(inputValueTitle));
     });
 
 });
