@@ -5,9 +5,12 @@
     "main": "index.js",
     "scripts": {
         "wdio": "npx wdio wdio.conf.js --spec",
-        "test": "npm run clean && wdio wdio.conf.js && npm run report",
-        "report": "allure generate --clean",
-        "clean": "rm -rf allure-results && rm -rf allure-report"
+        "test": "npm run clean && wdio && npm run report",
+        "test:windows": "npm run clean:windows && wdio && npm run report",
+        "clean": "rm -rf allure-results && rm -rf allure-report",
+        "clean:windows": "rd allure-results /s/q && rd allure-report /s/q",
+        "report": "allure generate allure-results --clean",
+        "report:open": "npx allure open allure-report"
     },
     "repository": {
         "type": "git",

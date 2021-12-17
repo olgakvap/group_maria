@@ -18,7 +18,7 @@ class SignupPage extends Page {
     }
 
     async signup (email, password) {
-        await this.open();
+
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
         await this.btnSubmit.click();
