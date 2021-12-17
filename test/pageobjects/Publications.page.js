@@ -24,6 +24,12 @@ class PublicationsPage extends Page {
     get linkLoadMore() {
         return $("//div[@class= 'btn-link']");
     }
+    get btnHumburgerMenu() {
+        return $("//button[@id='nav-bar-toggle']");
+    }
+    get btnProblems() {
+        return $('#problems');
+    }
     open() {
         return super.open('/publications');
     }
