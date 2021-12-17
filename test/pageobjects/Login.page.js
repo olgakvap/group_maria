@@ -13,6 +13,10 @@ class LoginPage extends Page {
         return $('button[type="submit"]');
     }
 
+    get signupButton() {
+        return $('//a[contains(text(),"Sign Up")]');
+    }
+
     async login (email, password) {
         await this.open();
         await this.inputEmail.setValue(email);
