@@ -1,4 +1,5 @@
 const Page = require('./Page');
+
 class EditAccountProfileJuliaEPage extends Page {
     get inputFirstName() {
         return $('#first-name');
