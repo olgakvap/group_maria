@@ -1,6 +1,6 @@
 const Page = require('./Page');
 
-class EditAccountProfileJuliaEPage extends Page {
+class EditAccountProfilePage extends Page {
     get inputFirstName() {
         return $('#first-name');
     }
@@ -26,9 +26,9 @@ class EditAccountProfileJuliaEPage extends Page {
         return $("//span[@class='MuiButton-startIcon MuiButton-iconSizeMedium css-6xugel']");
     }
 
-    open() {
-        return super.open('/user/61a639262d347ec0559fe77d/edit');
-    }
+//     open() {
+//         return super.open('/user/61a639262d347ec0559fe77d/edit');
+//     }
 }
 
 module.exports = new EditAccountProfileJuliaEPage();
