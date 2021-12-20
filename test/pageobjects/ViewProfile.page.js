@@ -12,7 +12,7 @@ class ViewProfilePage extends Page {
     get btnProfile() {
         return $("#profile");
     }
-    get hamburgerUnorderedList() {
+    get goToProfilePage() {
         return $("//ul[@class='MuiList-root MuiList-padding css-1ontqvh']");
     }
     async profilePage () {
