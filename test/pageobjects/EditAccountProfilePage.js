@@ -20,10 +20,10 @@ class EditAccountProfilePage extends Page {
         return $('#languages');
     }
     get btnCancel() {
-        return $("//button[@class='MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root mt-5 mr-3 css-79xub']");
+        return $("//button[@xpath='1']");
     }
     get btnSave() {
-        return $("//span[@class='MuiButton-startIcon MuiButton-iconSizeMedium css-6xugel']");
+        return $("[type='submit']");
     }
 
 //     open() {
