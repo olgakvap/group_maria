@@ -31,4 +31,4 @@ class EditAccountProfilePage extends Page {
 //     }
 }
 
-module.exports = new EditAccountProfileJuliaEPage();
+module.exports = new EditAccountProfilePage();
