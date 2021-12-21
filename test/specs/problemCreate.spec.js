@@ -5,12 +5,15 @@ const CreateProblemPage = require('../pageobjects/CreateProblem.page');
 
 describe('Creating Problem', () => {
 
-    const inputValueTitle = Date.now();
-
-    it('Create new problem with existing company', async () => {
+    before('Login and open problems page', async () => {
         await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
         await PublicationsPage.btnHumburgerMenu.click();
         await PublicationsPage.btnProblems.click();
+    });
+
+    const inputValueTitle = Date.now();
+
+    it('Create new problem with existing company', async () => {
         await ProblemsPage.btnAddProblem.click();
         await CreateProblemPage.fillAndSave(inputValueTitle, "any text", "any text");
 
@@ -19,7 +22,6 @@ describe('Creating Problem', () => {
 
     it('Create new problem with existing company and existing title', async () => {
         let inputSameValueTitle = inputValueTitle;
-
         await ProblemsPage.btnAddProblem.click();
         await CreateProblemPage.fillAndSave(inputSameValueTitle, "any text", "any text");
 
