@@ -7,6 +7,7 @@ describe('SIGNUP PAGE', () => {
     before('Open login page', async () => {
         await LoginPage.open();
     });
+
     //BUG: "Unnecessary validation appears while clicking on SignUp button"
     it('Should signup with valid credentials', async () => {
         await LoginPage.signupButton.click();

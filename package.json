@@ -5,11 +5,11 @@
     "main": "index.js",
     "scripts": {
         "wdio": "npx wdio wdio.conf.js --spec",
-        "test": "npm run clean && wdio && npm run report",
+        "test": "npm run clean && wdio wdio.conf.js && npm run report",
         "test:windows": "npm run clean:windows && wdio && npm run report",
         "clean": "rm -rf allure-results && rm -rf allure-report",
         "clean:windows": "rd allure-results /s/q && rd allure-report /s/q",
-        "report": "allure generate allure-results --clean",
+        "report": "allure generate --clean",
         "report:open": "npx allure open allure-report"
     },
     "repository": {
@@ -29,6 +29,7 @@
         "@wdio/local-runner": "^7.16.10",
         "@wdio/mocha-framework": "^7.16.6",
         "@wdio/spec-reporter": "^7.16.9",
+        "axios": "^0.24.0",
         "chai": "^4.3.4",
         "chromedriver": "^96.0.0",
         "geckodriver": "^2.0.4",
