@@ -25,10 +25,10 @@ exports.config = {
         // }
     ],
 
-    services: ['chromedriver', 'geckodriver', 'safaridriver'],
-    safariDriverArgs: ['-p 4444'],
+    services: ['chromedriver'], // 'geckodriver', 'safaridriver'],
+    // safariDriverArgs: ['-p 4444'],
 
-    logLevel: 'silent',
+    logLevel: 'info',
     bail: 0,
     baseUrl: url,
 
