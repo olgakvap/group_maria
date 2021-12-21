@@ -6,6 +6,9 @@ class ViewProfilePage extends Page {
     get userJobTitle() {
         return $("//div[@class='MuiTypography-root MuiTypography-h6 css-1anx036']");
     }
+    get userEmail() {
+        return $("//div[@xpath='1']");
+    }
     get btnHamburgerMenu() {
         return $("#nav-bar-toggle");
     }

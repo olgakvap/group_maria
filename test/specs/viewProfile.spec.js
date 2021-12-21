@@ -8,6 +8,7 @@ describe('View Profile Page', () => {
         await ViewProfilePage.profilePage();
         await expect(ViewProfilePage.userFirstLastName).toBeExisting().true;
         await expect(ViewProfilePage.userJobTitle).toBeExisting().true;
+        await expect(ViewProfilePage.userEmail).toBeExisting().true;
     });
 
 });
