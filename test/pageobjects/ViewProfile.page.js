@@ -12,6 +12,9 @@ class ViewProfilePage extends Page {
     get btnProfile() {
         return $("#profile");
     }
+    get goToProfilePage() {
+        return $("//ul[@class='MuiList-root MuiList-padding css-1ontqvh']");
+    }
     async profilePage () {
         //await this.open();
         await this.btnHamburgerMenu.click();
