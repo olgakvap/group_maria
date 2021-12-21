@@ -5,7 +5,7 @@ describe('View Publications List', () => {
 
     before('Log in', async () => {
         browser.maximizeWindow();
-        await LoginPage.login('user@user.com', 'superUser123!');
+        await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
     });
 
     it('Verify that the "Add Publication" is displayed and is clickable', async () => {

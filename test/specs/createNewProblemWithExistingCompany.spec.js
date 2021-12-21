@@ -8,7 +8,7 @@ describe('Creating Problem', () => {
     it('Create new problem with existing company', async () => {
         const inputValueTitle = Date.now();
 
-        await LoginPage.login('user@user.com', 'superUser123!');
+        await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
         await PublicationsPage.btnHumburgerMenu.click();
         await PublicationsPage.btnProblems.click();
         await ProblemsPage.btnAddProblem.click();

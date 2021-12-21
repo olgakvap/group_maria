@@ -5,7 +5,7 @@ const CreatePublicationPage = require('../pageobjects/CreatePublication.page');
 describe('Creating Publication', () => {
 
     before('Open login page', async () => {
-        await LoginPage.login('user@user.com', 'superUser123!');
+        await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
     });
 
     it('Should create the Publication providing required information', async () => {

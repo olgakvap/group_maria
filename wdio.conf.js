@@ -1,4 +1,4 @@
-const url = 'https://enduring.herokuapp.com';
+require('dotenv').config();
 
 exports.config = {
     specs: [
@@ -12,7 +12,7 @@ exports.config = {
 
     capabilities: [
         {
-            maxInstances: 5,
+            maxInstances: 1,
             browserName: 'chrome',
         },
         // {
@@ -30,7 +30,7 @@ exports.config = {
 
     logLevel: 'info',
     bail: 0,
-    baseUrl: url,
+    baseUrl: process.env.BASE_URL,
 
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
