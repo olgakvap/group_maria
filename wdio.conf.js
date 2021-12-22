@@ -5,14 +5,13 @@ exports.config = {
         './test/specs/**/*.js'
     ],
     exclude: [
-        './test/specs/signup.spec.js'
         // 'path/to/excluded/files'
     ],
     maxInstances: 10,
 
     capabilities: [
         {
-            maxInstances: 1,
+            maxInstances: 5,
             browserName: 'chrome',
         },
         // {
