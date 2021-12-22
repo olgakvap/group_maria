@@ -1,5 +1,5 @@
 const Page = require('./Page');
-const { clearInput, clearInput2, clearInput3, clearInput4 } = require('../../helpers/uiMethods');
+const { clearInput, clearInput2, clearInput3 } = require('../../helpers/uiMethods');
 
 class EditAccountProfilePage extends Page {
     get inputFirstName() {
