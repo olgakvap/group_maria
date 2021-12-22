@@ -1,5 +1,9 @@
 const Page = require('./Page');
+const NavBar = require("../pageobjects/components/NavBar");
 class ViewProfilePage extends Page {
+
+    navBar = new NavBar();
+
     get userFirstLastName() {
         return $("//div[@class='MuiTypography-root MuiTypography-h4 css-1xvinid']");
     }
@@ -9,22 +13,13 @@ class ViewProfilePage extends Page {
     get userEmail() {
         return $("//div[@xpath='1']");
     }
-    get btnHamburgerMenu() {
-        return $("#nav-bar-toggle");
-    }
-    get btnProfile() {
-        return $("#profile");
-    }
+
     get goToProfilePage() {
         return $("//ul[@class='MuiList-root MuiList-padding css-1ontqvh']");
     }
-    async profilePage () {
-        //await this.open();
-        await this.btnHamburgerMenu.click();
-        await this.btnProfile.click();
-    }
-    open() {
-        return super.open('/login');
+
+    open(id) {
+        return super.open(`/user/${id}`);
     }
 }
 
