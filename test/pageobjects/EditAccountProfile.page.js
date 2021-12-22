@@ -1,5 +1,5 @@
 const Page = require('./Page');
-const { clearInput } = require('../../helpers/uiMethods');
+const { clearInput, clearInput2, clearInput3, clearInput4 } = require('../../helpers/uiMethods');
 
 class EditAccountProfilePage extends Page {
     get inputFirstName() {
@@ -27,11 +27,11 @@ class EditAccountProfilePage extends Page {
         return $("[type='submit']");
     }
     async fillAndSave(firstName, lastName, jobTitle) {
-        await clearInput(await this.inputFirstName);
+        await clearInput(this.inputFirstName);
         await this.inputFirstName.setValue(firstName);
-        await clearInput(await this.inputLastName);
+        await clearInput2(await this.inputLastName);
         await this.inputLastName.setValue(lastName);
-        await clearInput(await this.inputJobTitle);
+        await clearInput3(await this.inputJobTitle);
         await this.inputJobTitle.setValue(jobTitle);
         await this.btnSave.click();
     }
