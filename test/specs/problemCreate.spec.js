@@ -5,8 +5,6 @@ const CreateProblemPage = require('../pageobjects/CreateProblem.page');
 
 describe('Creating Problem', () => {
 
-    const inputValueTitle = Date.now();
-
     before('Login and open problems page', async () => {
         await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
     });
@@ -16,21 +14,24 @@ describe('Creating Problem', () => {
     });
 
     it('Create new problem with existing company', async () => {
+        const inputValueTitle = Date.now();
+
         await ProblemsPage.btnAddProblem.click();
         await CreateProblemPage.fillAndSave(inputValueTitle, "any text", "any text");
 
         await expect(ProblemsPage.firstRecord.getText().hasOwnProperty(inputValueTitle));
     });
 
-    //TODO api create problem request
-    xit('Create new problem with existing company and existing title', async () => {
-        await ProblemsPage.btnAddProblem.click();
-        await CreateProblemPage.fillAndSave(inputValueTitle, "any text", "any text");
+    //Todo api create problem request
+    it('Create new problem with existing company and existing title', async () => {
+        const inputValueTitleNew = Date.now() + "1";
 
-        await expect(ProblemsPage.firstRecord.getText().hasOwnProperty(inputValueTitle));
-        browser.pause(1000);
+      //  await ProblemsPage.btnAddProblem.click(); - not sure why we do not need this line, wanna ask next time please ignore it
+        await CreateProblemPage.fillAndSave(inputValueTitleNew, "any text", "any text");
+
+        await expect(ProblemsPage.firstRecord.getText().hasOwnProperty(inputValueTitleNew));
         await ProblemsPage.btnAddProblem.click();
-        await CreateProblemPage.fillAndSave(inputValueTitle, "any text", "any text");
+        await CreateProblemPage.fillAndSave(inputValueTitleNew, "any text", "any text");
 
         await expect(CreateProblemPage.errorSameTitle.isDisplayed());
         await expect(CreateProblemPage.errorSameTitle.toHaveText("Error: Problem with same title already exist"));
