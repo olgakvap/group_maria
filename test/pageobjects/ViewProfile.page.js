@@ -13,6 +13,9 @@ class ViewProfilePage extends Page {
     get userEmail() {
         return $("//div[@xpath='1']");
     }
+    get btnEdit() {
+        return $("//button[contains(text(),'Edit')]");
+    }
 
     get goToProfilePage() {
         return $("//ul[@class='MuiList-root MuiList-padding css-1ontqvh']");

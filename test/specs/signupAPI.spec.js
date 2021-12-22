@@ -1,4 +1,4 @@
-const { userRegister, userActivate } = require("../../apiMethods/requests"); //import method here
+const { userRegister, userActivate } = require("../../helpers/apiRequests"); //import method here
 
 describe('LOGIN PAGE', () => {
 
