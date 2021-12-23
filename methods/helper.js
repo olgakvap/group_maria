@@ -1,5 +1,6 @@
 const {registerUser, registerActivation, userLoginAPI} = require("./axios.methods");
 
+
 async function clearInputValue(element){
     while(await element.getValue() !== ''){
         await element.doubleClick();

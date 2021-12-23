@@ -8,8 +8,8 @@ describe('Problems Page', () => {
 
     before('Login and open problems page', async () => {
         await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
-        await PublicationsPage.btnHumburgerMenu.click();
-        await PublicationsPage.btnProblems.click();
+        await $("//button[@id='nav-bar-toggle']").click();
+        await $('#problems').click();
     });
 
     describe('Working with Problem Page', () => {
@@ -26,15 +26,7 @@ describe('Problems Page', () => {
 
         });
 
-        it('Search a company by name "Google on all next pages"', async () => {
-
-            const problems = await ProblemsPage.problemRowsContainTextInColumn("Google", "Company");
-            await expect(problems.length).toEqual(10);
-
-        });
-
     });
-
 
 });
 
@@ -43,25 +35,6 @@ describe('Problems Page', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const LoginPage = require('../pageobjects/Login.page');
-// const PublicationsPage = require('../pageobjects/Publications.page');
 // const GlobalNavigation = require('../pageobjects/GlobalNavigation.page')
 //
 // const { createCompany, createProblem } = require("../../methods/axios.methods");
@@ -70,26 +43,20 @@ describe('Problems Page', () => {
 //
 // describe('LOGIN PAGE', () => {
 //
-//     // let token = null;
-//     // let getCompanyID = null;
-//     //
-//     // before(async () => {
-//     //     token = await creatAndLoginAPI("test152a0AffPIJulia@gmail.com", 'Wertyui4567890#');
-//     //     getCompanyID = await createCompany({title: 'TestCompany1', accessToken: token });
-//     // })
+//     let token = null;
+//     let getCompanyID = null;
 //
-//     before('Login and open problems page', async () => {
-//         await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
-//         await PublicationsPage.btnHumburgerMenu.click();
-//         await PublicationsPage.btnProblems.click();
+//     before(async () => {
+//         token = await creatAndLoginAPI("test152a0AffPIJulia@gmail.com", 'Wertyui4567890#');
+//         getCompanyID = await createCompany({ title: 'TestCompany1', accessToken: token });
+//     })
+//
+//     it('Should create 11 problems using API', async () => {
+//         const res = await createProblem({
+//             companyId: getCompanyID,
+//             accessToken: token
+//         });
 //     });
-//
-//     // it('Should create 11 problems using API', async () => {
-//     //     const res = await createProblem({
-//     //         companyId: getCompanyID,
-//     //         accessToken: token
-//     //     });
-//     // });
 //
 //
 // });

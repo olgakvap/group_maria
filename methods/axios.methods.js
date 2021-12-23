@@ -72,7 +72,7 @@ async function userLoginAPI(email, password) {
     variables: {"email": email, "password": password}
   });
 
-  const {data} = await axios({
+  const { data } = await axios({
     method: 'post',
     url: API_URL,
     data: queryData,
@@ -85,7 +85,7 @@ async function userLoginAPI(email, password) {
     return {errors: data.errors}
   } else {
     const accessToken = data.data.login.accessToken;
-    return {accessToken};
+    return { accessToken };
   }
 }
 
@@ -97,13 +97,14 @@ async function createCompany(
     title = 'Default Title',
     description = 'Default Description',
     accessToken
-  }) {
+  }
+  ) {
   const queryData = JSON.stringify({
     query: `mutation companyCreate ($data: CompanyInput) {
       companyCreate (data: $data)
     }`,
     variables: {
-      "data":
+      data:
         {
           title,
           description
@@ -111,7 +112,7 @@ async function createCompany(
     }
   });
 
-  const {data} = await axios({
+  const { data } = await axios({
     method: 'post',
     url: API_URL,
     data: queryData,
@@ -167,50 +168,6 @@ async function createProblem(
 
   if (data.errors) {
      console.log('+++++++++++++++++++', data.errors)
-    return {errors: data.errors}
-  } else {
-    const responseMsg = data.data.problemCreate;
-    return responseMsg;
-  }
-}
-
-//DELETE PROBLEM
-
-async function deleteProblem(
-  {
-    title = 'Default Title',
-    content = 'Default Content',
-    companyId,
-    jobTitle = 'Default engineer',
-    accessToken
-  }) {
-  const queryData = JSON.stringify({
-    query: `mutation problemCreate ($data: ProblemInput) {
-      problemCreate (data: $data)
-    }`,
-    variables: {
-      data:
-        {
-          title,
-          content,
-          company: companyId,
-          jobTitle,
-        }
-    }
-  });
-
-  const {data} = await axios({
-    method: 'post',
-    url: API_URL,
-    data: queryData,
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${ accessToken }`
-    }
-  })
-
-  if (data.errors) {
-    console.log('+++++++++++++++++++', data.errors)
     return {errors: data.errors}
   } else {
     const responseMsg = data.data.problemCreate;
