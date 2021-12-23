@@ -15,7 +15,7 @@ describe('Creating Publication', () => {
         await CreatePublicationPage.inputDescription.setValue("New Position2");
         await CreatePublicationPage.textareaContent.setValue("Bachelor's degree in a related field or equivalent practical experience.");
         await CreatePublicationPage.btnSavePublication.click();
-        await expect(PublicationsPage.pageTitle).toHaveText('publications');
+        await expect(PublicationsPage.navBar.pageTitle).toHaveText('publications');
         //Todo: add verification that publication with specified title has been created
         await PublicationsPage.linkLoadMore.waitForDisplayed();
         const publication = await PublicationsPage.findPublication(publicationTitle);

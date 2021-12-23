@@ -1,9 +1,10 @@
 const Page = require('./Page');
+const NavBar = require('../pageobjects/components/NavBar');
 
 class PublicationsPage extends Page {
-    get pageTitle() {
-        return $('h6');
-    }
+
+    navBar = new NavBar();
+
     get btnAddPublication() {
         return $("//button[contains(text(),'Add Publication')]");
     }
@@ -24,12 +25,7 @@ class PublicationsPage extends Page {
     get linkLoadMore() {
         return $("//div[@class= 'btn-link']");
     }
-    get btnHumburgerMenu() {
-        return $("//button[@id='nav-bar-toggle']");
-    }
-    get btnProblems() {
-        return $('#problems');
-    }
+
     open() {
         return super.open('/publications');
     }

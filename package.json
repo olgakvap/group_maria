@@ -34,6 +34,7 @@
         "chai": "^4.3.4",
         "chromedriver": "^96.0.0",
         "dotenv": "^10.0.0",
+        "faker": "^5.5.3",
         "geckodriver": "^2.0.4",
         "wdio-chromedriver-service": "^7.2.2",
         "wdio-geckodriver-service": "^2.0.3",
