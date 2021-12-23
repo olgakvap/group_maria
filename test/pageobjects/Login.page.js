@@ -16,6 +16,11 @@ class LoginPage extends Page {
     get signupButton() {
         return $('//a[contains(text(),"Sign Up")]');
     }
+    get alertMsg() {
+        return $('.MuiAlert-message');
+    }
+
+
 
     async login (email, password) {
         await this.open();
