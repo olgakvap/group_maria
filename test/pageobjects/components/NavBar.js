@@ -4,6 +4,7 @@ module.exports = class NavBar {
     get btnProblems() { return $('#problems'); }
     get btnProfile() { return $("#profile"); }
     get btnPeople() { return $("#people"); }
+    get logoutBtn() { return $("//span[.='Logout']"); }
 
     async openProblems() {
         await this.btnHamburgerMenu.click();
@@ -13,6 +14,10 @@ module.exports = class NavBar {
     async openProfile() {
         await this.btnHamburgerMenu.click();
         await this.btnProfile.click();
+    }
+    async logout() {
+        await this.btnHamburgerMenu.click();
+        await this.logoutBtn.click();
     }
 
     async openPeople() {

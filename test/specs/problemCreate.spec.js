@@ -23,7 +23,7 @@ describe('Creating Problem', () => {
     });
 
     //Todo api create problem request
-    it('Create new problem with existing company and existing title', async () => {
+    xit('Create new problem with existing company and existing title', async () => {
         const inputValueTitleNew = Date.now() + "1";
 
       //  await ProblemsPage.btnAddProblem.click(); - not sure why we do not need this line, wanna ask next time please ignore it

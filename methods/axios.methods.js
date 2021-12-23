@@ -64,9 +64,6 @@ async function userLoginAPI(email, password) {
     query: `query login ($email: String!, $password: String!) {
       login (email: $email, password: $password) {
         accessToken
-        user {
-            _id
-        }
       }
     }`,
     variables: {"email": email, "password": password}
@@ -176,10 +173,71 @@ async function createProblem(
 }
 
 
+//PROBLEM Delete
+
+async function deleteProblem(problemID, accessToken){
+  const queryData  = JSON.stringify({
+    query: `mutation ProblemDelete($problemId: ID!) {
+  problemDelete(problemId: $problemId)
+}`,
+    variables: {
+      problemId: problemID
+    }
+  });
+
+  const {data} = await axios({
+    method: 'post',
+    url: API_URL,
+    headers: {
+      'Authorization': `Bearer ${ accessToken }`,
+      'Content-Type': 'application/json'
+    },
+    data : queryData
+  });
+  if (data.errors) {
+    console.log('+++++++++++++++++++', data.errors)
+    return {errors: data.errors}
+  } else {
+    const responseMsg = data.data.problemDelete;
+    return responseMsg;
+  }
+}
+
+
+
 module.exports = {
   registerUser,
   registerActivation,
   userLoginAPI,
   createCompany,
-  createProblem
+  createProblem,
+  deleteProblem
 }
+// const runRequests = async () => {
+//   let email = `testUser${Date.now()}@gmail.com`;
+//   let password = 'testUser1234!';
+//   let res = await registerUser(email, password);
+//   console.log(res.activationLinkId);
+//   res = await registerActivation(res.activationLinkId);
+//   console.log(res.activationString);
+//   res = await userLoginAPI(email, password);
+//   console.log(res.accessToken);
+//   let token = res.accessToken;
+//   let companyID = await createCompany({title:'Company'+Date.now(),description: 'Maria',accessToken: res.accessToken});
+//   console.log(companyID);
+//   for (let i = 0; i < 11 ; i++) {
+//     res = await createProblem({
+//       title: 'New Problem' + Date.now(),
+//       companyId: companyID,
+//       jobTitle: 'Xperd',
+//       accessToken: token
+//     });
+//     console.log(res);
+//   }
+//   //Todo Hardcode does not work, need to finish what we started, show must go on...
+//   res = await deleteProblem('61c4e8276421378e73539849', token);
+//   console.log(res);
+// }
+//
+// runRequests();
+

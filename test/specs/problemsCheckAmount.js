@@ -8,13 +8,11 @@ describe('Problems Page', () => {
 
     before('Login and open problems page', async () => {
         await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
-        await $("//button[@id='nav-bar-toggle']").click();
-        await $('#problems').click();
+        await PublicationsPage.navBar.openProblems();
     });
 
     describe('Working with Problem Page', () => {
         it('Search a company by name "Google"', async () => {
-
             await ProblemsPage.filtersButton.click();
             await ProblemsPage.filterColumnsDropdown.selectByVisibleText("Company");
             await ProblemsPage.filterValueDropdown.setValue("Google");
@@ -23,7 +21,6 @@ describe('Problems Page', () => {
             await ProblemsPage.filtersButton.click();
             const problems = await ProblemsPage.problemRowsContainTextInColumn("Google", "Company");
             await expect(problems.length).toEqual(10);
-
         });
 
     });

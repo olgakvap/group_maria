@@ -20,8 +20,6 @@ class LoginPage extends Page {
         return $('.MuiAlert-message');
     }
 
-
-
     async login (email, password) {
         await this.open();
         await this.inputEmail.setValue(email);

@@ -1,4 +1,4 @@
-const { userRegister, userActivate } = require("../../helpers/apiRequests"); //import method here
+const { registerUser, registerActivation } = require("../../methods/axios.methods"); //import method here
 
 describe('LOGIN PAGE', () => {
 
@@ -6,15 +6,15 @@ describe('LOGIN PAGE', () => {
 
 
   it('API - registration', async () => {
-    result = await userRegister(`testUser${Date.now()}@gmail.com`, 'testUser1234!');
+    result = await registerUser(`testUser${Date.now()}@gmail.com`, 'testUser1234!');
     console.log(result)
-    expect(!!result.activationLink).toBe(true);
+    expect(!!result.activationLinkId).toBe(true);
   });
 
   it('API - user activation', async () => {
-    result = await userActivate(result.activationLink)
+    result = await registerActivation(result.activationLinkId)
     console.log(result)
-    expect(result.activationMessage).toHaveText("Activation Successful!")
+    expect(result.activationString).toHaveText("Activation Successful!")
   });
 
 });
