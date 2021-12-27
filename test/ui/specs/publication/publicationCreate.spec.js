@@ -3,13 +3,13 @@ const PublicationsPage = require('../../pageobjects/publication/Publications.pag
 const CreatePublicationPage = require('../../pageobjects/publication/PublicationCreate.page');
 
 // TODO: requires refactoring / reviewing
-describe('Editing Publication', () => {
+describe('Creating Publication', () => {
 
     before('Open login page', async () => {
         await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
     });
 
-    it('Should create the Publication providing required information', async () => {
+    xit('Should create the Publication providing required information', async () => {
         const publicationTitle = `publication${Date.now()}`;
         await PublicationsPage.btnAddPublication.click();
         await CreatePublicationPage.inputTitle.setValue(publicationTitle);
@@ -38,7 +38,8 @@ describe('Editing Publication', () => {
         await expect(CreatePublicationPage.errorMessage.isDisplayed());
         await expect(CreatePublicationPage.errorMessage.toHaveText("Please fill out this field."));
     });
-//TODO: cant runt last scenario with this one
+
+    // TODO: cant runt last scenario with this one
     it('Should not create the Publication without Content', async () => {
         await PublicationsPage.btnAddPublication.click();
         await CreatePublicationPage.inputTitle.setValue('Apple Company');
@@ -49,15 +50,14 @@ describe('Editing Publication', () => {
         await CreatePublicationPage.btnCancelPublication.click();
         await browser.refresh();
     });
+
     it('Should "CANCEL" creating Publication', async () => {
         await PublicationsPage.btnAddPublication.click();
         await CreatePublicationPage.inputTitle.setValue('Google QA Engineer Position');
         await CreatePublicationPage.inputDescription.setValue('New Position');
         await CreatePublicationPage.textareaContent.setValue('Minimum qualifications');
         await CreatePublicationPage.btnCancelPublication.click();
-        await browser.pause(4000);
-
-});
+    });
 });
 
 

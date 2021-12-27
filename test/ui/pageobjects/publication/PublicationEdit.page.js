@@ -19,7 +19,8 @@ class PublicationEditPage extends Page {
     get errorMessage() {
         return $('//div[@class=\'MuiAlert-message css-1w0ym84\']');
     }
-    open() {
+
+    open(pubId) {
         return super.open(`/publication/${pubId}/edit`);
     }
 }
