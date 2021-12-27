@@ -1,6 +1,6 @@
 const Page = require('../Page');
 
-class PublicationCreatePage extends Page {
+class PublicationEditPage extends Page {
     get inputTitle() {
         return $('#title');
     }
@@ -20,8 +20,8 @@ class PublicationCreatePage extends Page {
         return $('//div[@class=\'MuiAlert-message css-1w0ym84\']');
     }
     open() {
-        return super.open('/publications/create');
+        return super.open(`/publication/${pubId}/edit`);
     }
 }
 
-module.exports = new PublicationCreatePage();
+module.exports = new PublicationEditPage();

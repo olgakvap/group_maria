@@ -241,3 +241,65 @@ module.exports = {
 //
 // runRequests();
 
+//PUBLICATION CREATE
+async function createPublication(
+    {
+      title= "Default Title",
+      description= "test1",
+      content= "test2",
+      accessToken
+    }) {
+  const queryData = JSON.stringify({
+    query: `mutation PublicationCreate($values: PublicationInput) {
+  publicationCreate(values: $values) {
+    _id
+    title
+    description
+    content
+    image
+    owner {
+      _id
+      firstName
+      lastName
+      image
+      __typename
+    }
+    likes {
+      _id
+      firstName
+      lastName
+      image
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}`,
+    variables: {
+      values:
+          {
+        title,
+            description,
+            content,
+          }
+      }
+    });
+
+  const {data} = await axios({
+    method: 'post',
+    url: API_URL,
+    data: queryData,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${ accessToken }`
+    }
+  })
+  if (data.errors) {
+    console.log('+++++++++++++++++++', data.errors)
+    return {errors: data.errors}
+  } else {
+    const publicationID = data.data.publicationCreate._id;
+    return publicationID;
+  }
+}
