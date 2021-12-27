@@ -41,6 +41,7 @@
         "wdio-safaridriver-service": "^0.0.1"
     },
     "dependencies": {
+        "allure-commandline": "^2.17.2",
         "axios": "^0.24.0"
     }
 }

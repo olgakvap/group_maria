@@ -2,7 +2,7 @@ require('dotenv').config();
 
 exports.config = {
     specs: [
-        './test/specs/**/*.js'
+        './test/ui/specs/**/*.js'
     ],
     exclude: [
         // 'path/to/excluded/files'
@@ -127,9 +127,9 @@ exports.config = {
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-        // if (!passed) {
-        //     await browser.takeScreenshot();
-        // }
+        if (!passed) {
+            await browser.takeScreenshot();
+        }
     },
 
 
