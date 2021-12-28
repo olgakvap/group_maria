@@ -1,27 +1,13 @@
 const Page = require('../Page');
 
 class ProblemCreatePage extends Page {
-    get inputTitle() {
-        return $('#title');
-    }
-    get inputCompany() {
-        return $('#company');
-    }
-    get inputPosition() {
-        return $('#position');
-    }
-    get appleCompanyOption() {
-        return $("//li[@id='company-option-0']");
-    }
-    get inputContent(){
-        return $("//textarea[@class='w-md-editor-text-input ']");
-    }
-    get btnSave() {
-        return $('[type="submit"]');
-    }
-    get errorSameTitle() {
-        return $("//div[@class='MuiAlert-message css-1w0ym84']");
-    }
+    get inputTitle() { return $('#title'); }
+    get inputCompany() { return $('#company'); }
+    get inputPosition() { return $('#position'); }
+    get appleCompanyOption() { return $("//li[@id='company-option-0']"); }
+    get inputContent(){ return $("//textarea[@class='w-md-editor-text-input ']"); }
+    get btnSave() { return $('[type="submit"]'); }
+    get errorMessage() { return $('.MuiAlert-message'); }
 
     async fillAndSave (title, position, content) {
         await this.inputTitle.setValue(title);

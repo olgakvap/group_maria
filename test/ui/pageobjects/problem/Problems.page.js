@@ -21,6 +21,8 @@ class ProblemsPage extends Page {
 
   problemsRowContainText (text) { return $(`//*[@class="MuiDataGrid-row"]//*[contains(text(), "${text}")]`); }
 
+  problemsRowsContainText (text) { return $$(`//*[@class="MuiDataGrid-row"]//*[contains(text(), "${text}")]`); }
+
   problemRowsContainTextInColumn (text, column) {
     return $$(`//*[contains(text(), "${text}") and @data-field='${column}']`);
     // return browser.findElements('xpath', `//*[contains(text(), "${text}") and @data-field='${column}']`)
