@@ -1,17 +1,5 @@
 const axios = require('axios');
-const API_URL = 'https://enduring-server.herokuapp.com/v3/graphql';
-
-const buildConfig = (data, accessToken) => {
-  return {
-    method: 'post',
-    url: API_URL,
-    headers: {
-      'content-type': 'application/json',
-      Authorization: 'Bearer ' + accessToken,
-    },
-    data: JSON.stringify(data),
-  };
-};
+const { buildConfig } = require('../../helpers/buildConfig');
 
 const companyDelete = (companyId, accessToken) => {
   const data = {
@@ -20,11 +8,30 @@ const companyDelete = (companyId, accessToken) => {
     }`,
     variables: {
       'companyId': companyId
-    },
+    }
+  };
+  return axios(buildConfig(data, accessToken));
+};
+
+const companyCreate = ( title, description, image, link, accessToken ) => {
+  const data = {
+    query: `mutation companyCreate ($data: CompanyInput) {
+      companyCreate (data: $data)
+    }`,
+    variables: {
+      data:
+        {
+          title,
+          description,
+          image,
+          link
+        }
+    }
   };
   return axios(buildConfig(data, accessToken));
 };
 
 module.exports = {
   companyDelete,
+  companyCreate,
 };

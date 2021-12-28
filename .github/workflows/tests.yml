@@ -29,4 +29,6 @@ jobs:
           BASE_URL: https://enduring.herokuapp.com
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           API_URL: https://enduring-server.herokuapp.com/v3/graphql

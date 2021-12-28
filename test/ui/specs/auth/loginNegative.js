@@ -1,6 +1,6 @@
 const LoginPage = require('../../pageobjects/auth/Login.page');
 const Publications = require('../../pageobjects/publication/Publications.page');
-const { clearInputValue } = require('../../../helpers/helper');
+const { clearInputValue } = require('../../../helpers/uiMethods.helper');
 
 describe('LOGIN PAGE', () => {
 
