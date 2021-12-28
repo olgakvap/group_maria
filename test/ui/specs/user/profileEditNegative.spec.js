@@ -2,7 +2,7 @@ const LoginPage = require('../../pageobjects/auth/Login.page');
 const ViewProfilePage = require('../../pageobjects/user/Profile.page');
 const EditProfilePage = require('../../pageobjects/user/ProfileEdit.page');
 const PublicationsPage = require('../../pageobjects/publication/Publications.page');
-const {clearInputValue} = require("../../../helpers/helper");
+const {clearInputValue} = require('../../../helpers/uiMethods.helper');
 
 describe('Checking Input Fields Limit Negative Tests', () => {
 

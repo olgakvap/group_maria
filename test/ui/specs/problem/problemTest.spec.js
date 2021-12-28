@@ -66,7 +66,7 @@ describe('Problems Page - TEST', () => {
       await ProblemsPage.filtersButton.click();
       const problems = await ProblemsPage.problemRowsContainTextInColumn(company.title, "Company");
       await expect(problems.length).toEqual(10);
-      browser.pause(5000);
+
     });
 
   });
@@ -74,7 +74,7 @@ describe('Problems Page - TEST', () => {
   after('CLEANUP', async () => {
     // 5. Delete all problems
     for (let problem of problemsArray) {
-      const problemDeleteRes = await deleteProblem({ problemID: problem._id, accessToken: testUser.id });
+      const problemDeleteRes = await deleteProblem({ problemID: problem._id, accessToken: testUser.accessToken});
     }
 
     // 6. Login as admin
