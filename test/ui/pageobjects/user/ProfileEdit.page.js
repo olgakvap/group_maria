@@ -20,6 +20,9 @@ class ProfileEditPage extends Page {
     get inputProgrammingLanguages() {
         return $('#languages');
     }
+    get errorMessage() {
+        return $('//div[@class="MuiAlert-message css-1w0ym84"]');
+    }
     get btnCancel() {
         return $("//button[@xpath='1']");
     }
