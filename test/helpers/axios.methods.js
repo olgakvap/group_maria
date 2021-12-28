@@ -68,7 +68,7 @@ async function userLoginAPI(email, password) {
         }
       }
     }`,
-    variables: {"email": email, "password": password}
+    variables: {email, password}
   });
 
   const { data } = await axios({
@@ -308,6 +308,8 @@ module.exports = {
   registerUser,
   registerActivation,
   userLoginAPI,
+  userLogoutAPI,
+  userPasswordResetRequest,
   createCompany,
   createProblem,
   deleteProblem,
@@ -379,4 +381,60 @@ module.exports = {
 //
 // runRequests();
 
+//USER LOGOUT API
+async function userLogoutAPI() {
+  const queryData = JSON.stringify({
+    query: `query Logout {
+  logout
+  }`,
+    variables: {}
+  });
+
+  const { data } = await axios({
+    method: 'post',
+    url: API_URL,
+    data: queryData,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  if (data.errors) {
+    return {errors: data.errors}
+  } else {
+    const logoutBoolean = data.data.logout;
+    return { logoutBoolean };
+  }
+}
+
+//USER PASSWORD RESET REQUEST
+
+async function userPasswordResetRequest(email, accessToken) {
+  const queryData = JSON.stringify({
+    query: `mutation RestorePasswordRequest($email: String!) {
+  userPasswordResetRequest(email: $email)
+  }`,
+    variables: {
+      email,
+      accessToken
+    }
+  });
+
+  const {data} = await axios({
+    method: 'post',
+    url: API_URL,
+    data: queryData,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+    }
+  })
+
+  if (data.errors) {
+    return {errors: data.errors}
+  } else {
+    const resetPasswordString = data.data.userPasswordResetRequest;
+    return {resetPasswordString};
+  }
+}
 
