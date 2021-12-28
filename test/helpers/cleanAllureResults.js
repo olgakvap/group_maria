@@ -1,8 +1,8 @@
 const fs = require('fs');
 
 // directory path
-const allureReportDir = '../../allure-report';
-const allureResultsDir = '../../allure-results';
+const allureReportDir = 'allure-report';
+const allureResultsDir = 'allure-results';
 
 // delete directory recursively
 try {
