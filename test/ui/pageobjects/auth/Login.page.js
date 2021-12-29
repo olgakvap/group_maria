@@ -1,24 +1,12 @@
 const Page = require('../Page');
 
 class LoginPage extends Page {
-    get inputEmail() {
-        return $('#email');
-    }
-
-    get inputPassword() {
-        return $('#password');
-    }
-
-    get btnSubmit() {
-        return $('button[type="submit"]');
-    }
-
-    get signupButton() {
-        return $('//a[contains(text(),"Sign Up")]');
-    }
-    get alertMsg() {
-        return $('.MuiAlert-message');
-    }
+    get inputEmail() { return $('#email'); }
+    get inputPassword() { return $('#password'); }
+    get btnSubmit() { return $('button[type="submit"]'); }
+    get signupButton() { return $('//a[contains(text(),"Sign Up")]'); }
+    get alertMsg() { return $('.MuiAlert-message'); }
+    get notActivatedAlertMessage() { return $('.MuiAlert-message>div>div'); }
 
     async login (email, password) {
         await this.open();

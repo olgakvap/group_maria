@@ -1,0 +1,12 @@
+{
+  "auth": {
+    "incorrectPasswordMessage": "Incorrect password",
+    "userNotExistMessage": "User with provided email does not exist",
+    "requiredFieldMessage": "Please fill out this field.",
+    "userNotActivatedMessage": "User is not activated. Please use activation link from registration email!"
+  },
+  "publications": {
+    "pageTitle": "publications",
+    "firstNameMaxLengthValidationMessage": "ValidationError: firstName: Max length is 35 characters"
+  }
+}

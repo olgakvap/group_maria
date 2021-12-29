@@ -5,6 +5,12 @@ async function clearInputValue(element){
     }
 }
 
+async function getValidationMessage(element){
+    const requiredMessage = await browser.execute(`return document.getElementById("${element}").validationMessage`);
+    return requiredMessage;
+}
+
 module.exports = {
     clearInputValue,
+    getValidationMessage
 }
