@@ -40,4 +40,14 @@ describe('Creating Problem', () => {
         await expect(message).toEqual("Error: Problem with same title already exist");
     });
 
+    it('Start creating new problem and cancel', async () => {
+        const inputValueTitle = Date.now();
+
+        await ProblemsPage.addProblemButton.click();
+        await CreateProblemPage.fillAndCancel(Date.now(), "any text", "any text");
+
+        const foundRowsCount = await ProblemsPage.problemsRowsContainText(inputValueTitle).length;
+        expect(foundRowsCount).toEqual(0);
+    });
+
 });
