@@ -1,6 +1,9 @@
 const Page = require('../Page');
+const NavBar = require("../components/NavBar");
 
 class ProblemsPage extends Page {
+
+  navBar = new NavBar();
 
   get addProblemButton() { return $("//button[text() = 'New Problem']"); }
   get nextPageLabel() { return $("//button[@aria-label='Go to next page']"); }
