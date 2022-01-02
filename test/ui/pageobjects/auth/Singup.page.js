@@ -17,6 +17,10 @@ class SignupPage extends Page {
         return $('//div[contains(text(),\'Registration successful!\')]');
     }
 
+    get emailErrorMessage() {
+        return $('#email-helper-text');
+    }
+
     async signup (email, password) {
 
         await this.inputEmail.setValue(email);
