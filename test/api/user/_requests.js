@@ -15,8 +15,8 @@ const userDelete = (userId, accessToken) => {
 
 const getUsers = (accessToken) => {
   const data = {
-    query: `query Users {  
-      users {
+    query: `query users {
+    users {
         _id
         email
         firstName
@@ -35,8 +35,9 @@ const getUsers = (accessToken) => {
         updatedAt
         isActivated
         activationLinkId
+        }
     }`,
-    variables: {},
+    variables: {}
   };
   return axios(buildConfig(data, accessToken));
 };

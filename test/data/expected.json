@@ -1,12 +1,17 @@
 {
   "auth": {
-    "incorrectPasswordMessage": "Incorrect password",
-    "userNotExistMessage": "User with provided email does not exist",
-    "requiredFieldMessage": "Please fill out this field.",
-    "userNotActivatedMessage": "User is not activated. Please use activation link from registration email!"
+    "errors": {
+      "USER_NOT_ACTIVATED": "User is not activated. Please use activation link from registration email!",
+      "REQUIRED_FIELD": "Please fill out this field.",
+      "USER_NOT_EXIST": "User with provided email does not exist",
+      "INCORRECT_PASSWORD": "Incorrect password",
+      "INVALID_EMAIL": "Email validation error"
+    }
   },
   "publications": {
     "pageTitle": "publications",
-    "firstNameMaxLengthValidationMessage": "ValidationError: firstName: Max length is 35 characters"
+    "errors": {
+      "FIRST_NAME_MAX_LENGTH": "ValidationError: firstName: Max length is 35 characters"
+    }
   }
 }

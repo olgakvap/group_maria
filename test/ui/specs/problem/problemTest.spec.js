@@ -17,7 +17,6 @@ describe('Problems Page - TEST', () => {
       password: 'testUser1234!'
     };
     Object.assign(testUser, await createAndLoginAPI(testUser.email, testUser.password));
-    console.log(testUser);
 
     // 2. Create a company
     company = {
@@ -28,7 +27,6 @@ describe('Problems Page - TEST', () => {
         description: 'Maria',
         accessToken: testUser.accessToken
       });
-    console.log(company);
 
     // 3. Create 11 problems
     const problemTitle = 'New Problem' + Date.now();
@@ -79,16 +77,13 @@ describe('Problems Page - TEST', () => {
 
     // 6. Login as admin
     const adminLoginRes = await userLoginAPI(process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);
-    console.log(adminLoginRes.accessToken);
     const adminToken = adminLoginRes.accessToken;
 
     // 7. Delete the company
-    const companyDeleteRes = await deleteCompany({companyID: company.id, accessToken: adminToken});
-    console.log(companyDeleteRes);
+    await deleteCompany({companyID: company.id, accessToken: adminToken});
 
     // 8. Delete the user from step 1
-    const userDeleteRes = await deleteUser({userId: testUser.userID, accessToken: testUser.accessToken});
-    console.log(userDeleteRes);
+    await deleteUser({userId: testUser.userID, accessToken: testUser.accessToken});
   })
 
 });

@@ -53,8 +53,21 @@ const userLogin = (email, password) => {
   return axios(buildConfig(data));
 };
 
+const getUserAuthData = async(email, password) => {
+  const { data } = await userLogin(email, password);
+
+  if (data.errors) {
+    return { errors: data.errors };
+  } else {
+    const accessToken = data.data.login.accessToken;
+    const userID = data.data.login.user._id;
+    return { accessToken, userID };
+  }
+};
+
 module.exports = {
   userCreate,
   userActivate,
-  userLogin
+  userLogin,
+  getUserAuthData
 };

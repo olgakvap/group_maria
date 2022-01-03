@@ -10,7 +10,7 @@ describe('LOGIN PAGE', () => {
         await LoginPage.login('12345678909876543', process.env.USER_PASSWORD);
 
         const res = await LoginPage.alertMsg.getText();
-        await expect(res).toEqual(expected.auth.userNotExistMessage);
+        await expect(res).toEqual(expected.auth.errors.USER_NOT_EXIST);
     });
 
     it('Should login after user add correct email', async () => {
@@ -27,7 +27,7 @@ describe('LOGIN PAGE', () => {
         await LoginPage.login(process.env.USER_EMAIL,'1234566rt1!');
 
         const res = await LoginPage.alertMsg.getText();
-        await expect(res).toEqual(expected.auth.incorrectPasswordMessage);
+        await expect(res).toEqual(expected.auth.errors.INCORRECT_PASSWORD);
     });
 
     it('Should login after user add correct password', async () => {
@@ -44,20 +44,20 @@ describe('LOGIN PAGE', () => {
         await LoginPage.login('', process.env.USER_PASSWORD);
 
         const requiredMessage = await getValidationMessage('email');
-        await expect(requiredMessage).toEqual(expected.auth.requiredFieldMessage);
+        await expect(requiredMessage).toEqual(expected.auth.errors.REQUIRED_FIELD);
     });
 
     it('Should not login with empty password', async () => {
         await LoginPage.login(process.env.USER_EMAIL, '');
 
         const requiredMessage = await getValidationMessage('password');
-        await expect(requiredMessage).toEqual(expected.auth.requiredFieldMessage);
+        await expect(requiredMessage).toEqual(expected.auth.errors.REQUIRED_FIELD);
     });
 
     it('Should not login with invalid email format', async () => {
         await LoginPage.login('wrongEmail@', process.env.USER_PASSWORD);
 
-        await expect(LoginPage.alertMsg).toHaveText(expected.auth.userNotExistMessage);
+        await expect(LoginPage.alertMsg).toHaveText(expected.auth.errors.USER_NOT_EXIST);
     });
 
     it('Should not login as not-activated user', async () => {
@@ -67,7 +67,7 @@ describe('LOGIN PAGE', () => {
 
         await LoginPage.login(email, password);
 
-        await expect(LoginPage.notActivatedAlertMessage).toHaveText(expected.auth.userNotActivatedMessage);
+        await expect(LoginPage.notActivatedAlertMessage).toHaveText(expected.auth.errors.USER_NOT_ACTIVATED);
     });
 
 });

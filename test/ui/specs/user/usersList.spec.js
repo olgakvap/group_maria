@@ -13,8 +13,8 @@ describe('View Users List', () => {
         await PublicationsPage.navBar.openPeople();
         const userName = await UsersListPage.userFullNameText.getText();
         await UsersListPage.userNameLink.click();
-        expect(await ProfilePage.userFirstLastName.getText()).toEqual(userName);
 
+        await expect(await ProfilePage.userFirstLastName.getText()).toEqual(userName);
     });
 
 });
