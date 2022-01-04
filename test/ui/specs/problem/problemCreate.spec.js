@@ -2,6 +2,7 @@ const LoginPage = require('../../pageobjects/auth/Login.page');
 const PublicationsPage = require('../../pageobjects/publication/Publications.page');
 const ProblemsPage = require('../../pageobjects/problem/Problems.page');
 const CreateProblemPage = require('../../pageobjects/problem/ProblemCreate.page');
+const ProblemPage = require('../../pageobjects/problem/Problem.page');
 
 // TODO: requires refactoring / reviewing
 describe('Creating Problem', () => {
@@ -19,8 +20,9 @@ describe('Creating Problem', () => {
         const inputValueTitle = Date.now();
 
         await ProblemsPage.addProblemButton.click();
-        await CreateProblemPage.fillAndSave(inputValueTitle, "any text", "any text");
+        await CreateProblemPage.fillAndSave(inputValueTitle, "Apple", "any text", "any text");
         await ProblemsPage.nextPageLabel.waitForDisplayed({timeout: 5000});
+
         const foundRowsCount = await ProblemsPage.problemsRowsContainText(inputValueTitle).length;
         expect(foundRowsCount).toEqual(1);
     });
@@ -30,12 +32,11 @@ describe('Creating Problem', () => {
         const inputValueTitleNew = Date.now() + "1";
 
         await ProblemsPage.addProblemButton.click();
-        await CreateProblemPage.fillAndSave(inputValueTitleNew, "any text", "any text");
-        await ProblemsPage.nextPageLabel.waitForDisplayed({timeout: 5000});
-
+        await CreateProblemPage.fillAndSave(inputValueTitleNew, "Apple", "any text", "any text");
         await ProblemsPage.addProblemButton.click();
-        await CreateProblemPage.fillAndSave(inputValueTitleNew, "any text", "any text");
+        await CreateProblemPage.fillAndSave(inputValueTitleNew,"Apple", "any text", "any text");
         await CreateProblemPage.errorMessage.waitForDisplayed();
+
         const message = await CreateProblemPage.errorMessage.getText();
         await expect(message).toEqual("Error: Problem with same title already exist");
     });
@@ -44,10 +45,29 @@ describe('Creating Problem', () => {
         const inputValueTitle = Date.now();
 
         await ProblemsPage.addProblemButton.click();
-        await CreateProblemPage.fillAndCancel(Date.now(), "any text", "any text");
+        await CreateProblemPage.fillAndCancel(Date.now(), "Apple", "any text", "any text");
 
         const foundRowsCount = await ProblemsPage.problemsRowsContainText(inputValueTitle).length;
         expect(foundRowsCount).toEqual(0);
+    });
+
+    it('Create new problem with filters for Content field', async () => {
+        const inputValueTitle = Date.now();
+        const inputValueContent = "anytext";
+
+        await ProblemsPage.addProblemButton.click();
+        await CreateProblemPage.fillWithFiltersAndSave(inputValueTitle, "Apple", "any text", inputValueContent);
+        await ProblemsPage.nextPageLabel.waitForDisplayed({timeout: 5000});
+        await ProblemsPage.problemsRowContainText(inputValueTitle).click();
+
+        const elem = await ProblemPage.getContentValue(inputValueContent);
+        await expect(await elem.getTagName()).toEqual("del");
+
+        const parent = await elem.parentElement();
+        await expect(await parent.getTagName()).toEqual("strong");
+
+        const parentOfParent = await parent.parentElement();
+        await expect(await parentOfParent.getTagName()).toEqual("em");
     });
 
 });
