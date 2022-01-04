@@ -10,7 +10,7 @@ describe('RESTORE PASSWORD PAGE', () => {
     it('API - registration', async () => {
         result = await registerUser(testEmail, testPassword);
         console.log(result)
-        expect(!!result.activationLinkId).toBe(true);
+        expect(!!result.activationLinkId).toBeTruthy();
     });
 
     it('API - user activation', async () => {
@@ -22,13 +22,13 @@ describe('RESTORE PASSWORD PAGE', () => {
     it('API - user login', async () => {
         result = await userLoginAPI(testEmail, testPassword)
         console.log(result)
-        expect(!!result.accessToken).toBe(true);
+        expect(!!result.accessToken).toBeTruthy();
     });
 
     it('API - user logout', async () => {
         result = await userLogoutAPI();
         console.log(result)
-        expect(result.logoutBoolean).toBe(true);
+        expect(result.logoutBoolean).toBeTruthy();
     });
 
     it('API - restore password request', async () => {

@@ -1,6 +1,8 @@
 const LoginPage = require('../../pageobjects/auth/Login.page');
 const PublicationsPage = require('../../pageobjects/publication/Publications.page');
 const CreatePublicationPage = require('../../pageobjects/publication/PublicationCreate.page');
+const expected = require('../../../data/expected.json');
+const {getValidationMessage} = require("../../../helpers/uiMethods.helper");
 
 // TODO: requires refactoring / reviewing
 describe('Creating Publication', () => {
@@ -23,20 +25,21 @@ describe('Creating Publication', () => {
         expect(await PublicationsPage.getPublicationTitle(publication)).toBe(publicationTitle);
     });
 
-    xit('Should not create the Publication without Title', async () => {
+    xit ('Should not create the Publication without Title', async () => {
         await PublicationsPage.btnAddPublication.click();
-        await CreatePublicationPage.inputTitle.setValue('');
         await CreatePublicationPage.btnSavePublication.click();
-        await expect(CreatePublicationPage.errorMessage.isDisplayed());
-        await expect(CreatePublicationPage.errorMessage.toHaveText("Please fill out this field."));
+
+        const requiredMessage = await getValidationMessage('title');
+        //await expect(CreatePublicationPage.errorMessage).toBeDisplayed();
+        await expect(requiredMessage).toHaveText(expected.general.errors.REQUIRED_FIELD);
     });
 
     xit('Should not create the Publication without Description', async () => {
         await PublicationsPage.btnAddPublication.click();
         await CreatePublicationPage.inputTitle.setValue('Apple Company');
         await CreatePublicationPage.btnSavePublication.click();
-        await expect(CreatePublicationPage.errorMessage.isDisplayed());
-        await expect(CreatePublicationPage.errorMessage.toHaveText("Please fill out this field."));
+        await expect(CreatePublicationPage.errorMessage).toBeDisplayed();
+        await expect(CreatePublicationPage.errorMessage).toHaveText(expected.general.errors.REQUIRED_FIELD);
     });
 
     // TODO: cant runt last scenario with this one
@@ -45,8 +48,8 @@ describe('Creating Publication', () => {
         await CreatePublicationPage.inputTitle.setValue('Apple Company');
         await CreatePublicationPage.inputDescription.setValue('Information about apple company');
         await CreatePublicationPage.btnSavePublication.click();
-        await expect(CreatePublicationPage.errorMessage.isDisplayed());
-        await expect(CreatePublicationPage.errorMessage.toHaveText("ValidationError: content: Path `content` is required."));
+        await expect(CreatePublicationPage.errorMessage).toBeDisplayed();
+        await expect(CreatePublicationPage.errorMessage).toHaveText(expected.publications.errors.CONTENT_REQUIRED_FIELD);
         await CreatePublicationPage.btnCancelPublication.click();
         await browser.refresh();
     });

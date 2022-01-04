@@ -60,7 +60,7 @@ describe('Problems Page - TEST', () => {
       await ProblemsPage.filterColumnsDropdown.selectByVisibleText("Company");
       await ProblemsPage.filterValueDropdown.setValue(company.title);
       const loader = await ProblemsPage.filterLoadIcon;
-      await expect(loader).not.toBeDisplayed()
+      await expect(loader).not.toBeDisplayed();
       await ProblemsPage.filtersButton.click();
       const problems = await ProblemsPage.problemRowsContainTextInColumn(company.title, "Company");
       await expect(problems.length).toEqual(10);

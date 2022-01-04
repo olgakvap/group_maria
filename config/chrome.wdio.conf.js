@@ -13,3 +13,4 @@ exports.config = merge(baseConfig.config, {
 
   logLevel: 'info',
 }, { clone: false });
+

@@ -8,7 +8,7 @@ describe('LOGIN PAGE', () => {
   it('API - registration', async () => {
     result = await registerUser(`testUser${Date.now()}@gmail.com`, 'testUser1234!');
     console.log(result)
-    expect(!!result.activationLinkId).toBe(true);
+    expect(!!result.activationLinkId).toBeTruthy();
   });
 
   it('API - user activation', async () => {

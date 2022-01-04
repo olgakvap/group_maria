@@ -1,5 +1,6 @@
 const LoginPage = require('../../pageobjects/auth/Login.page');
 const ProblemsPage = require('../../pageobjects/problem/Problems.page');
+const PublicationPage = require('../../pageobjects/publication/Publications.page');
 
 
 describe('View Problems List Page', () => {
@@ -9,12 +10,14 @@ describe('View Problems List Page', () => {
     });
 
     it('Should display buttons: Problem name, Position, Company, Solutions, Creator', async () => {
-        await ProblemsPage.open();
-        await expect(ProblemsPage.problemName).toBeExisting().true;
-        await expect(ProblemsPage.position).toBeExisting().true;
-        await expect(ProblemsPage.company).toBeExisting().true;
-        await expect(ProblemsPage.solutions).toBeExisting().true;
-        await expect(ProblemsPage.creator).toBeExisting().true;
+        await PublicationPage.navBar.openProblems();
+        await ProblemsPage.nextPageLabel.waitForDisplayed({timeout: 3000});
+
+        await expect(ProblemsPage.problemName).toBeExisting();
+        await expect(ProblemsPage.position).toBeExisting();
+        await expect(ProblemsPage.company).toBeExisting();
+        await expect(ProblemsPage.solutions).toBeExisting();
+        await expect(ProblemsPage.creator).toBeExisting();
     });
 
 });

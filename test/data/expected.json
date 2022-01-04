@@ -1,8 +1,12 @@
 {
+  "general":{
+    "errors": {
+      "REQUIRED_FIELD": "Please fill out this field."
+    }
+  },
   "auth": {
     "errors": {
       "USER_NOT_ACTIVATED": "User is not activated. Please use activation link from registration email!",
-      "REQUIRED_FIELD": "Please fill out this field.",
       "USER_NOT_EXIST": "User with provided email does not exist",
       "INCORRECT_PASSWORD": "Incorrect password",
       "INVALID_EMAIL": "Email validation error"
@@ -11,7 +15,8 @@
   "publications": {
     "pageTitle": "publications",
     "errors": {
-      "FIRST_NAME_MAX_LENGTH": "ValidationError: firstName: Max length is 35 characters"
+      "FIRST_NAME_MAX_LENGTH": "ValidationError: firstName: Max length is 35 characters",
+      "CONTENT_REQUIRED_FIELD": "ValidationError: content: Path `content` is required."
     }
   }
 }

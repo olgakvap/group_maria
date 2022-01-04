@@ -44,14 +44,14 @@ describe('LOGIN PAGE', () => {
         await LoginPage.login('', process.env.USER_PASSWORD);
 
         const requiredMessage = await getValidationMessage('email');
-        await expect(requiredMessage).toEqual(expected.auth.errors.REQUIRED_FIELD);
+        await expect(requiredMessage).toEqual(expected.general.errors.REQUIRED_FIELD);
     });
 
     it('Should not login with empty password', async () => {
         await LoginPage.login(process.env.USER_EMAIL, '');
 
         const requiredMessage = await getValidationMessage('password');
-        await expect(requiredMessage).toEqual(expected.auth.errors.REQUIRED_FIELD);
+        await expect(requiredMessage).toEqual(expected.general.errors.REQUIRED_FIELD);
     });
 
     it('Should not login with invalid email format', async () => {

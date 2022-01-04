@@ -18,7 +18,7 @@ describe('Edit User Profile', () => {
         await ViewProfilePage.btnEdit.click();
         await EditProfilePage.fillAndSave(newFirstName,newLastName,newJobTitle);
 
-        expect(await ViewProfilePage.userFirstLastName.toBeExisting().true);
+        expect(await ViewProfilePage.userFirstLastName).toBeExisting();
 
     });
 
