@@ -11,7 +11,7 @@ class ProfilePage extends Page {
         return $("//div[@class='MuiTypography-root MuiTypography-h6 css-1anx036']");
     }
     get userEmail() {
-        return $("//p[contains(@class, 'css-18m8r0v')]/div/b[contains(text(), 'Email:')]/..");
+        return $("//b[contains(text(),'Email:')]");
     }
     get userAbout() {
         return $("//b[contains(text(),'About:')]");
