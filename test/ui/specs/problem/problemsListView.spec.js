@@ -11,7 +11,7 @@ describe('View Problems List Page', () => {
 
     it('Should display buttons: Problem name, Position, Company, Solutions, Creator', async () => {
         await PublicationPage.navBar.openProblems();
-        await ProblemsPage.nextPageLabel.waitForDisplayed({timeout: 3000});
+        await ProblemsPage.nextPageLabel.waitForDisplayed({timeout: 6000});
 
         await expect(ProblemsPage.problemName).toBeExisting();
         await expect(ProblemsPage.position).toBeExisting();
