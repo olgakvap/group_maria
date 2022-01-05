@@ -30,35 +30,22 @@ describe('Boundary Values Testing for First Name Input Field', () => {
             let firstNameInputValue = string.repeat(i);
             if (i == 0){
                 await clearInputValue(await EditProfilePage.inputFirstName);
-                await browser.pause(1500);
                 await EditProfilePage.inputFirstName.setValue('');
-                await browser.pause(1500);
                 await EditProfilePage.btnSave.click();
-                await browser.pause(1500);
                 await expect(EditProfilePage.pageTitle).toHaveText('user');
-                await browser.pause(1500);
                 i++;
             }else if(i == 1 || i == 21 || i == 35){
                 await clearInputValue(await EditProfilePage.inputFirstName);
-                await browser.pause(1500);
                 await EditProfilePage.inputFirstName.setValue(firstNameInputValue);
-                await browser.pause(1500);
                 await EditProfilePage.btnSave.click();
-                await browser.pause(1500);
                 await expect(Profile.btnEdit).toBeClickable();
-                await browser.pause(1500);
                 await Profile.btnEdit.click();
-                await browser.pause(1500);
                 i++;
             }else if(i == 36 || i == 100){
                 await clearInputValue(await EditProfilePage.inputFirstName);
-                await browser.pause(1500);
                 await EditProfilePage.inputFirstName.setValue(firstNameInputValue);
-                await browser.pause(1500);
                 await EditProfilePage.btnSave.click();
-                await browser.pause(1500);
                 await expect(EditProfilePage.errorMessage).toHaveText('ValidationError: firstName: Max length is 35 characters');
-                await browser.pause(1500);
                 i++;
             }
         }
