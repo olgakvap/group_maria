@@ -21,6 +21,7 @@ async function randomString(length) {
 }
 
 module.exports = {
+    randomString
     clearInputValue,
     getValidationMessage
 }
