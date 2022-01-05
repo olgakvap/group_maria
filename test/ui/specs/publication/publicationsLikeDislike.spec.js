@@ -16,23 +16,34 @@ describe('COMMENT PUBLICATION', () => {
         await CreatePublicationPage.btnSavePublication.click();
     });
 
+    const getLikeCount = async () => {
+        const spanCountLike = await PublicationsPage.countLikes;
+        const countLikeStr = await spanCountLike.getText();
+        const countLike = +countLikeStr;
+        await expect(countLike).not.toBeNaN();
+        return countLike;
+    }
+
     it('Verify Publication can be liked', async () => {
+        let before = await getLikeCount();
+
         await PublicationsPage.btnLikePublication.click();
         await PublicationPage.countLikes.waitForDisplayed({timeout: 3000});
 
-        const countLike = await PublicationsPage.countLikes;
-        console.log(await countLike.getText());
-        await expect(await countLike.getText()).toBe("1");
+        let after = await getLikeCount();
 
+        //Revert to previous condition
         await PublicationsPage.btnLikePublication.click();
+
+        await expect(after).toBeGreaterThanOrEqual(before + 1);
     });
 
     xit('Verify Publication can be unliked', async () => {
-    //TODO: Get rid of pauses, need help to replace for waiters
+        //TODO: Get rid of pauses, need help to replace for waiters
         await PublicationsPage.btnLikePublication.click();
-        await browser.pause(3000);
+        //await browser.pause(3000);
         await PublicationsPage.btnLikePublication.click();
-        await browser.pause(3000);
+        //await browser.pause(3000);
 
         const countLike = await PublicationsPage.countLikes;
         console.log(await countLike.getText());
