@@ -27,7 +27,7 @@ describe('COMMENT PUBLICATION', () => {
         await PublicationsPage.btnLikePublication.click();
     });
 
-    it('Verify Publication can be unliked', async () => {
+    xit('Verify Publication can be unliked', async () => {
     //TODO: Get rid of pauses, need help to replace for waiters
         await PublicationsPage.btnLikePublication.click();
         await browser.pause(3000);
