@@ -2,6 +2,9 @@ const Page = require('../Page');
 const { clearInputValue } = require('../../../helpers/uiMethods.helper');
 
 class ProfileEditPage extends Page {
+    get pageTitle() {
+        return $('//h6');
+    }
     get inputFirstName() {
         return $('#first-name');
     }
