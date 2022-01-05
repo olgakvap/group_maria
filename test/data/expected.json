@@ -18,5 +18,16 @@
       "FIRST_NAME_MAX_LENGTH": "ValidationError: firstName: Max length is 35 characters",
       "CONTENT_REQUIRED_FIELD": "ValidationError: content: Path `content` is required."
     }
+  },
+  "user": {
+    "pageTitle": "user",
+    "errors": {
+      "FIRST_NAME_MAX_LENGTH": "ValidationError: firstName: Max length is 35 characters",
+      "LAST_NAME_MAX_LENGTH": "ValidationError: lastName: Max length is 35 characters",
+      "JOB_TITLE_MAX_LENGTH": "ValidationError: jobTitle: Max length is 255 characters",
+      "PROFILE_IMAGE_LINK_MAX_LENGTH": "ValidationError: image: Max length is 255 characters",
+      "ABOUT_MAX_LENGTH": "ValidationError: about: Max length is 255 characters",
+      "ALL_FIELDS_MAX_LENGTH": "ValidationError: firstName: Max length is 35 characters, lastName: Max length is 35 characters, about: Max length is 255 characters, image: Max length is 255 characters, jobTitle: Max length is 255 characters"
+    }
   }
 }
