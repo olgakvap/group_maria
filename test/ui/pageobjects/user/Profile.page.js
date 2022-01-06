@@ -13,6 +13,9 @@ class ProfilePage extends Page {
     get userEmail() {
         return $("//p[contains(@class, 'css-18m8r0v')]/div/b[contains(text(), 'Email:')]/..");
     }
+    get userEmailLabel() {
+        return $("//b[contains(text(),'Email:')]");
+    }
     get userAbout() {
         return $("//b[contains(text(),'About:')]");
     }

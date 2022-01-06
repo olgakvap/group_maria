@@ -29,19 +29,43 @@ class ProfileEditPage extends Page {
     get btnSave() {
         return $("[type='submit']");
     }
-    async fillAndSave(firstName, lastName, jobTitle) {
-        await clearInputValue(this.inputFirstName);
-        await this.inputFirstName.setValue(firstName);
-        await clearInputValue(await this.inputLastName);
-        await this.inputLastName.setValue(lastName);
-        await clearInputValue(await this.inputJobTitle);
-        await this.inputJobTitle.setValue(jobTitle);
+    async fillAndSave(firstName = '', lastName = '', jobTitle = '') {
+        if (firstName !== ''){
+            await clearInputValue(this.inputFirstName);
+            await this.inputFirstName.setValue(firstName);
+        }
+        if (lastName !== ''){
+            await clearInputValue(await this.inputLastName);
+            await this.inputLastName.setValue(lastName);
+        }
+        if (jobTitle !== ''){
+            await clearInputValue(await this.inputJobTitle);
+            await this.inputJobTitle.setValue(jobTitle);
+        }
         await this.btnSave.click();
     }
+    async fillAndSaveLinkToImage(linkToImage) {
+        await clearInputValue(await this.inputExternalLinkToProfileImage);
+        await this.inputExternalLinkToProfileImage.setValue(linkToImage);
+        await this.btnSave.click();
+    }
+    async fillAndSaveAbout(about) {
+        await clearInputValue(await this.inputAbout);
+        await this.inputAbout.setValue(about);
+        await this.btnSave.click();
+    }
+    async fillLinkToImage(linkToImage) {
+        await clearInputValue(await this.inputExternalLinkToProfileImage);
+        await this.inputExternalLinkToProfileImage.setValue(linkToImage);
+    }
+    async fillAbout(about) {
+        await clearInputValue(await this.inputAbout);
+        await this.inputAbout.setValue(about);
+    }
 
-     open(id) {
-         return super.open(`/user/${id}/edit`);
-   }
+    open(id) {
+        return super.open(`/user/${id}/edit`);
+    }
 }
 
 module.exports = new ProfileEditPage();
