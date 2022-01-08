@@ -14,6 +14,7 @@ describe('SIGNUP PAGE', () => {
         await SignupPage.signup(`user${Date.now()}@user.com`, 'superUser123!');
         await expect(SignupPage.messageUserRegistered).toBeExisting();
         await expect(await SignupPage.messageUserRegistered).toHaveText('Registration successful!');
+        await expect(SignupPage.messageActivationLinkSent).toHaveText('Activation link was sent to email');
     });
 
 });

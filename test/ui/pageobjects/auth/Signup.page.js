@@ -16,6 +16,9 @@ class SignupPage extends Page {
     get messageUserRegistered() {
         return $('//div[contains(text(),\'Registration successful!\')]');
     }
+    get messageActivationLinkSent() {
+        return $('//div[contains(text(),\'Activation link was sent to email\')]');
+    }
 
     get emailErrorMessage() {
         return $('#email-helper-text');
