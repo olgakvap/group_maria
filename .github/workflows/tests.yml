@@ -24,7 +24,7 @@ jobs:
     - run: npm ci
     - run: npm run test:headless
       env:
-          BASE_URL: https://enduring.herokuapp.com
+          BASE_URL: https://enduring.netlify.app
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
