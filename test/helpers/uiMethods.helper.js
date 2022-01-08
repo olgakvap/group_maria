@@ -4,7 +4,6 @@ async function clearInputValue(element){
         element.keys("Delete");
     }
 }
-
 async function getValidationMessage(element){
     const requiredMessage = await browser.execute(`return document.getElementById("${element}").validationMessage`);
     return requiredMessage;
@@ -18,9 +17,14 @@ async function randomString(length){
     }
     return result;
 }
+async function clearAndFillField(element, value){
+    await clearInputValue(element);
+    return await element.setValue(value);
+}
 
 module.exports = {
     clearInputValue,
     randomString,
+    clearAndFillField,
     getValidationMessage
 }

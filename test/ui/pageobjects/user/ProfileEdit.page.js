@@ -1,5 +1,5 @@
 const Page = require('../Page');
-const { clearInputValue } = require('../../../helpers/uiMethods.helper');
+const { clearInputValue, clearAndFillField } = require('../../../helpers/uiMethods.helper');
 
 class ProfileEditPage extends Page {
     get inputFirstName() {
@@ -29,38 +29,24 @@ class ProfileEditPage extends Page {
     get btnSave() {
         return $("[type='submit']");
     }
-    async fillAndSave(firstName = '', lastName = '', jobTitle = '') {
-        if (firstName !== ''){
-            await clearInputValue(this.inputFirstName);
-            await this.inputFirstName.setValue(firstName);
-        }
-        if (lastName !== ''){
-            await clearInputValue(await this.inputLastName);
-            await this.inputLastName.setValue(lastName);
-        }
-        if (jobTitle !== ''){
-            await clearInputValue(await this.inputJobTitle);
-            await this.inputJobTitle.setValue(jobTitle);
+
+    async fillAndSave(firstName, lastName, jobTitle, linkToImage, about) {
+        if (firstName !== undefined) {
+            await clearAndFillField(await this.inputFirstName, firstName);
+        } 
+        if (lastName !== undefined) {
+            await clearAndFillField(await this.inputLastName, lastName);
+        } 
+        if (jobTitle !== undefined) {
+            await clearAndFillField(await this.inputJobTitle, jobTitle);
+        } 
+        if (linkToImage !== undefined) {
+            await clearAndFillField(await this.inputExternalLinkToProfileImage, linkToImage);
+        } 
+        if (about !== undefined) {
+            await clearAndFillField(await this.inputAbout, about);
         }
         await this.btnSave.click();
-    }
-    async fillAndSaveLinkToImage(linkToImage) {
-        await clearInputValue(await this.inputExternalLinkToProfileImage);
-        await this.inputExternalLinkToProfileImage.setValue(linkToImage);
-        await this.btnSave.click();
-    }
-    async fillAndSaveAbout(about) {
-        await clearInputValue(await this.inputAbout);
-        await this.inputAbout.setValue(about);
-        await this.btnSave.click();
-    }
-    async fillLinkToImage(linkToImage) {
-        await clearInputValue(await this.inputExternalLinkToProfileImage);
-        await this.inputExternalLinkToProfileImage.setValue(linkToImage);
-    }
-    async fillAbout(about) {
-        await clearInputValue(await this.inputAbout);
-        await this.inputAbout.setValue(about);
     }
 
     open(id) {
