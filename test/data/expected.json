@@ -19,6 +19,11 @@
       "CONTENT_REQUIRED_FIELD": "ValidationError: content: Path `content` is required."
     }
   },
+  "companies": {
+    "pageTitle": "companies",
+    "errors": {
+    }
+  },
   "user": {
     "pageTitle": "user",
     "errors": {
