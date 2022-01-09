@@ -76,7 +76,7 @@ async function createCompanyAndGetID({
   if (data.errors) {
     return {errors: data.errors}
   } else {
-    const companyID = data.data.companyCreate;
+    const companyID = data.data.companyCreate._id;
     return companyID;
   }
 }
@@ -93,8 +93,209 @@ async function createProblem(
   }) {
   const queryData = JSON.stringify({
     query: `mutation problemCreate ($data: ProblemInput) {
-      problemCreate (data: $data)
-    }`,
+    problemCreate (data: $data) {
+        _id
+        title
+        content
+        company {
+            _id
+            title
+            description
+            image
+            link
+            problems {
+                _id
+                title
+                content
+                company {
+                    _id
+                    title
+                    description
+                    image
+                    link
+                    likes {
+                        _id
+                        email
+                        firstName
+                        lastName
+                        about
+                        image
+                        jobTitle
+                        level
+                        languages
+                        roles
+                        links
+                        starredProblems
+                        starredPublications
+                        lastAccess
+                        createdAt
+                        updatedAt
+                        isActivated
+                        activationLinkId
+                    }
+                }
+                jobTitle
+                solutions {
+                    _id
+                    problemId
+                    content
+                    likes {
+                        _id
+                        email
+                        firstName
+                        lastName
+                        about
+                        image
+                        jobTitle
+                        level
+                        languages
+                        roles
+                        links
+                        starredProblems
+                        starredPublications
+                        lastAccess
+                        createdAt
+                        updatedAt
+                        isActivated
+                        activationLinkId
+                    }
+                    owner {
+                        _id
+                        email
+                        firstName
+                        lastName
+                        about
+                        image
+                        jobTitle
+                        level
+                        languages
+                        roles
+                        links
+                        starredProblems
+                        starredPublications
+                        lastAccess
+                        createdAt
+                        updatedAt
+                        isActivated
+                        activationLinkId
+                    }
+                    complexity
+                    createdAt
+                    updatedAt
+                }
+                owner {
+                    _id
+                    email
+                    firstName
+                    lastName
+                    about
+                    image
+                    jobTitle
+                    level
+                    languages
+                    roles
+                    links
+                    starredProblems
+                    starredPublications
+                    lastAccess
+                    createdAt
+                    updatedAt
+                    isActivated
+                    activationLinkId
+                }
+            }
+            likes {
+                _id
+                email
+                firstName
+                lastName
+                about
+                image
+                jobTitle
+                level
+                languages
+                roles
+                links
+                starredProblems
+                starredPublications
+                lastAccess
+                createdAt
+                updatedAt
+                isActivated
+                activationLinkId
+            }
+        }
+        jobTitle
+        solutions {
+            _id
+            problemId
+            content
+            likes {
+                _id
+                email
+                firstName
+                lastName
+                about
+                image
+                jobTitle
+                level
+                languages
+                roles
+                links
+                starredProblems
+                starredPublications
+                lastAccess
+                createdAt
+                updatedAt
+                isActivated
+                activationLinkId
+            }
+            owner {
+                _id
+                email
+                firstName
+                lastName
+                about
+                image
+                jobTitle
+                level
+                languages
+                roles
+                links
+                starredProblems
+                starredPublications
+                lastAccess
+                createdAt
+                updatedAt
+                isActivated
+                activationLinkId
+            }
+            complexity
+            createdAt
+            updatedAt
+        }
+        owner {
+            _id
+            email
+            firstName
+            lastName
+            about
+            image
+            jobTitle
+            level
+            languages
+            roles
+            links
+            starredProblems
+            starredPublications
+            lastAccess
+            createdAt
+            updatedAt
+            isActivated
+            activationLinkId
+        }
+    }
+}`,
     variables: {
       data:
         {
