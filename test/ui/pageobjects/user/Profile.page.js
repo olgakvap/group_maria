@@ -32,7 +32,7 @@ class ProfilePage extends Page {
         return $("//span[@class='MuiChip-label MuiChip-labelMedium css-9iedg7']");
     }
     get userInitials() {
-        return $("//div[@class='profile-image initials']");
+        return $("//div[@class='user-image initials']");
     }
     //Todo ask about langauges, if there are more than one language on the profile,
     // then this selector appears according to the number //span[@class='MuiChip-label MuiChip-labelSmall css-1pjtbja']
