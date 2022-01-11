@@ -5,6 +5,7 @@
     }
   },
   "auth": {
+    "userActivationMessage": "User successfully activated",
     "errors": {
       "USER_NOT_ACTIVATED": "User is not activated. Please use activation link from registration email!",
       "USER_NOT_EXIST": "User with provided email does not exist",

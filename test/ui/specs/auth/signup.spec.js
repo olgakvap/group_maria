@@ -10,7 +10,7 @@ describe('SIGNUP PAGE', () => {
 
     //BUG: "Unnecessary validation appears while clicking on SignUp button"
     it('Should signup with valid credentials', async () => {
-        await LoginPage.signupButton.click();
+        await LoginPage.linkSignup.click();
         await SignupPage.signup(`user${Date.now()}@user.com`, 'superUser123!');
         await expect(SignupPage.messageUserRegistered).toBeExisting();
         await expect(await SignupPage.messageUserRegistered).toHaveText('Registration successful!');
