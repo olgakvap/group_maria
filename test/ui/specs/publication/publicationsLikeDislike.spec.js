@@ -30,12 +30,8 @@ describe('COMMENT PUBLICATION', () => {
         await expect(likesCountAfter).toEqual(likesCountBefore + 1);
     });
 
-    xit('Verify Publication can be unliked', async () => {
-        //TODO: Get rid of pauses, need help to replace for waiters
-        await PublicationsPage.btnLikePublication.click();
-        //await browser.pause(3000);
-        await PublicationsPage.btnLikePublication.click();
-        //await browser.pause(3000);
+    it('Verify Publication can be unliked', async () => {
+        await PublicationsPage.btnLikePublication.doubleClick();
 
         const countLike = await PublicationsPage.countLikes;
         console.log(await countLike.getText());
