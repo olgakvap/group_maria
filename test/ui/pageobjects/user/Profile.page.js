@@ -19,6 +19,9 @@ class ProfilePage extends Page {
     get userAbout() {
         return $("//b[contains(text(),'About:')]");
     }
+    get userAboutValue() {
+        return $("//p[contains(@class, 'css-18m8r0v')]/div/b[contains(text(), 'About:')]/..");
+    }
     get userLanguages() {
         return $("//b[contains(text(),'Languages:')]");
     }
