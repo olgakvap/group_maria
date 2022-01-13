@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { getProblems } = require("../api/problem/_requests");
 const { companyDelete } = require("../api/company/_requests");
-const { userDelete } = require("../api/user/_requests");
+const { userDelete, userUpdate } = require("../api/user/_requests");
 const { userCreate, userActivate, userLogin } = require("../api/auth/_requests");
 const { companyCreate } = require('../api/company/_requests');
 const API_URL = 'https://enduring-server.herokuapp.com/v3/graphql';
@@ -60,6 +60,20 @@ async function createAndLoginAPI(email, password){
 
   return userLoginRes;
 }
+// USER UPDATE
+
+async function updateUser(userId, values, accessToken){
+  const {data} = await userUpdate(userId, values, accessToken);
+// console.log(data);
+  if (data.errors) {
+    return { errors: data.errors }
+  } else {
+    const responseMsg = data.data.userUpdate;
+    return responseMsg;
+  }
+}
+
+
 
 //COMPANY CREATE
 
@@ -526,7 +540,8 @@ module.exports = {
   createPublication,
   deleteCompany,
   deleteUser,
-  userLogoutAPI
+  userLogoutAPI,
+  updateUser
 }
 
 // const runRequests = async () => {

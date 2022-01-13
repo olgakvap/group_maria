@@ -13,6 +13,19 @@ const userDelete = (userId, accessToken) => {
   return axios(buildConfig(data, accessToken));
 };
 
+const userUpdate = (userId, values, accessToken) => {
+  const data = {
+    query: `mutation userUpdate ($userId: ID!, $values: UserInput) {
+    userUpdate (userId: $userId, values: $values)
+    }`,
+    variables: {
+      "userId": userId,
+      "values": values
+    },
+  };
+  return axios(buildConfig(data, accessToken));
+};
+
 const getUsers = (accessToken) => {
   const data = {
     query: `query users {
@@ -44,6 +57,7 @@ const getUsers = (accessToken) => {
 
 module.exports = {
   userDelete,
-  getUsers
+  getUsers,
+  userUpdate
 };
 
