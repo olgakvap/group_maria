@@ -14,7 +14,8 @@
         "test:edge": "npx wdio config/edge.wdio.conf.js --spec",
         "clean": "node test/helpers/cleanAllureResults.js",
         "report": "allure generate --clean",
-        "report:open": "npx allure open allure-report"
+        "report:open": "npx allure open allure-report",
+        "test:silent":" npx wdio config/chrome.wdio.conf.js --log-level 'silent' --spec"
     },
     "repository": {
         "type": "git",

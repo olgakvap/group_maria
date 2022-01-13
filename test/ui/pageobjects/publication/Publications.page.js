@@ -7,6 +7,10 @@ class PublicationsPage extends Page {
 
     get btnAddPublication() { return $("//button[contains(text(),'Add Publication')]"); }
     get publicationsList() { return $$("//div[contains(@class,'mb-4')]"); }
+    get publicationTitlesList() { return $$("(//div[@class='text-break']/..)"); }
+    get publicationDescriptionList() { return $$("(//div[@class='description text-break'])/."); }
+
+
     get linkLoadMore() { return $("//div[contains(@class,'css-aoeo82')]/following-sibling::div[@class = 'btn-link']"); }
     get btnLikePublication() { return $("#like-btn")};
 
@@ -21,17 +25,17 @@ class PublicationsPage extends Page {
 
     get btnLoadMoreComments() { return $("//ul[contains(@class, 'css-18xpdcy')]/following-sibling::div")};
 
-    findPublication(title) {
-        return this.publicationsList.find(async (publication) =>
-            await publication.$("div>a[href*='/publication/']").getText() === title);
-    }
+    // findPublication(title) {
+    //     return this.publicationsList.find(async (publication) =>
+    //         await publication.$("div>a[href*='/publication/']").getText() === title);
+    // }
 
-    async getPublicationTitle(publication) {
-        let title = typeof publication === 'string' ?
-            await this.findPublication(publication).$("div>a[href*='/publication/']").getText() :
-            await publication.$("div>a[href*='/publication/']").getText();
-        return title;
-    }
+    // async getPublicationTitle(publication) {
+    //     let title = typeof publication === 'string' ?
+    //         await this.findPublication(publication).$("div>a[href*='/publication/']").getText() :
+    //         await publication.$("div>a[href*='/publication/']").getText();
+    //     return title;
+    // }
 
     async getLikeCount() {
         const spanCountLike = await this.countLikes;
