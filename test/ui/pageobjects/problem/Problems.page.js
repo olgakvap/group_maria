@@ -21,6 +21,7 @@ class ProblemsPage extends Page {
   get company() { return $("//div[@data-field='Company' and @role= 'columnheader' ]"); }
   get solutions() { return $("//div[@data-field='Solutions' and @role= 'columnheader' ]"); }
   get creator() { return $("//div[@data-field='Creator' and @role= 'columnheader' ]"); }
+  get newProblem() {return $("//a[contains(text(), 'Problem')]"); }
 
   problemsRowContainText (text) { return $(`//*[@class="MuiDataGrid-row"]//*[contains(text(), "${text}")]`); }
 
@@ -34,7 +35,6 @@ class ProblemsPage extends Page {
   open() {
     return super.open('/problems');
   }
-
 }
 
 module.exports = new ProblemsPage();
