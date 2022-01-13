@@ -13,6 +13,13 @@
       "INVALID_EMAIL": "Email validation error"
     }
   },
+  "registration": {
+    "pageTitle": "Sign Up",
+    "errors": {
+      "INVALID_PASSWORD": "Password must include at least: 6 characters, 1 uppercase, 1 lowercase, 1 numeric or 1 special character.",
+      "INVALID_EMAIL": "Email validation error"
+    }
+  },
   "publications": {
     "pageTitle": "publications",
     "errors": {
