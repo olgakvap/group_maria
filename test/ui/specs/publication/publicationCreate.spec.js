@@ -57,7 +57,7 @@ describe('Creating Publication - Positive', () => {
     });
 });
 
-describe('Creating Publication - Negative', () => {
+describe.skip('Creating Publication - Negative', () => {
 
     before('Open login page', async () => {
         await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);

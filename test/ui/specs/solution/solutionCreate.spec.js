@@ -56,7 +56,7 @@ describe('E2E test - create solution', () => {
             const actualProblemTitle = await ProblemPage.headerTitleProblem.getText();
             await expect(actualProblemTitle).toEqual(expectedProblemTitle);
     });
-        it('Should create solution with default data', async () => {
+        xit('Should create solution with default data', async () => {
             await ProblemPage.btnAddNewSolution.click();
             await ProblemPage.btnLastSolution.waitForDisplayed({timeout: 5000});
             await ProblemPage.btnLastSolution.click();

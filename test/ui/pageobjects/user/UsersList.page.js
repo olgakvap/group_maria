@@ -5,14 +5,12 @@ class UsersListPage extends Page {
 
     navBar = new NavBar();
 
-    get userNameLink() {
-        return $(`(//*[@id="root"]/div`);
+    get usersListLink() {
+        return $$('//div[@class="text-truncate"]/b');
     }
-    get userFullNameText() {
-        return $(`(//div[@class="text-truncate"])[1]/b`);
-    }
+
     findUserNameLinkByID(userID){
-        return $(`//a[@class="linked-text" and @href="/user/${userID}"]`);
+        return $(`//a[@class="linked-text" and @href="/user/${userID}"]/div/b`);
     }
 
     open() {
