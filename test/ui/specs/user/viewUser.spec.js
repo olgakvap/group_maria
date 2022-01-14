@@ -1,7 +1,7 @@
 const LoginPage = require("../../pageobjects/auth/Login.page");
 const PublicationsPage = require('../../pageobjects/publication/Publications.page');
 const UsersListPage = require('../../pageobjects/user/UsersList.page');
-const UserViewPage = require('../../pageobjects/user/UserView.page');
+const UserViewPage = require('../../pageobjects/user/UserProfileView.page');
 const {createAndLoginAPI, updateUser, deleteUser} = require("../../../helpers/axios.methods");
 
 describe('View User Card', () => {
