@@ -5,7 +5,7 @@ const CreateProblemPage = require('../../pageobjects/problem/ProblemCreate.page'
 const ProblemPage = require('../../pageobjects/problem/Problem.page');
 
 // TODO: requires refactoring / reviewing
-describe('Creating Problem', () => {
+describe.skip('Creating Problem', () => {
 
     before('Login and open problems page', async () => {
         await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
