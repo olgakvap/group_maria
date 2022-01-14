@@ -1,6 +1,8 @@
 const SignupPage = require('../../../pageobjects/auth/Signup.page');
 const { randomString } = require('../../../../helpers/uiMethods.helper');
 const expected = require('../../../../data/expected.json');
+const { createAndLoginAPI } = require('../../../../helpers/axios.methods');
+const LoginPage = require('../../../pageobjects/auth/Login.page');
 
 describe('Negative Tests for Registration', async () => {
 
@@ -12,8 +14,15 @@ describe('Negative Tests for Registration', async () => {
     });
 
     it('SISO - 1: Should Not Register user that already exists', async () => {
-        await SignupPage.signup(testEmailValid, dotEnvPassword);
-        await expect(await SignupPage.userExistsErrorMessage(testEmailValid)).toBeDisplayed();
+        userTitle = 'Julia' + Date.now();
+        testUser = {
+            email: `${userTitle}@gmail.com`,
+            password: dotEnvPassword
+        };
+
+        Object.assign(testUser, await createAndLoginAPI(testUser.email, testUser.password));
+        await SignupPage.signup(testUser.email, testUser.password);
+        await expect(await SignupPage.userExistsErrorMessage(testUser.email)).toBeDisplayed();
     });
 
     it('SISO - 2: Should show input validation errors disappearing', async () => {
