@@ -3,7 +3,7 @@ const ProblemsPage = require('../../pageobjects/problem/Problems.page');
 const PublicationPage = require('../../pageobjects/publication/Publications.page');
 
 
-describe('View Problems List Page', () => {
+describe.skip('View Problems List Page', () => {
 
     before('Open login page', async () => {
         await LoginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);

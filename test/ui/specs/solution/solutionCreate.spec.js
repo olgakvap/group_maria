@@ -41,20 +41,18 @@ describe('E2E test - create solution', () => {
 
          // 4. Get problems ids
         problem = await findProblemByTitle(problemTitle, testUser.accessToken);
-    });
-
-        beforeEach('Should open the created problem', async() => {
-            await LoginPage.login(testUser.email, testUser.password);
-            await PublicationsPage.navBar.openProblems();
-            await ProblemsPage.filtersButton.click();
-            await ProblemsPage.filterColumnsDropdown.selectByVisibleText("Company");
-            await ProblemsPage.filterValueDropdown.setValue(company.title);
-            await ProblemsPage.filtersButton.click();
-            await ProblemsPage.newProblem.waitForDisplayed();
-            const expectedProblemTitle = await ProblemsPage.newProblem.getText();
-            await ProblemsPage.newProblem.click();
-            const actualProblemTitle = await ProblemPage.headerTitleProblem.getText();
-            await expect(actualProblemTitle).toEqual(expectedProblemTitle);
+        //open the problem
+        await LoginPage.login(testUser.email, testUser.password);
+        await PublicationsPage.navBar.openProblems();
+        await ProblemsPage.filtersButton.click();
+        await ProblemsPage.filterColumnsDropdown.selectByVisibleText("Company");
+        await ProblemsPage.filterValueDropdown.setValue(company.title);
+        await ProblemsPage.filtersButton.click();
+        await ProblemsPage.newProblem.waitForDisplayed();
+        const expectedProblemTitle = await ProblemsPage.newProblem.getText();
+        await ProblemsPage.newProblem.click();
+        const actualProblemTitle = await ProblemPage.headerTitleProblem.getText();
+        await expect(actualProblemTitle).toEqual(expectedProblemTitle);
     });
         xit('Should create solution with default data', async () => {
             await ProblemPage.btnAddNewSolution.click();

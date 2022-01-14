@@ -4,3 +4,5 @@ allure-report
 allure-results
 .DS_Store
 .env
+newman
+schema.graphql

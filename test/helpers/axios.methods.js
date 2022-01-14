@@ -4,6 +4,7 @@ const { companyDelete } = require("../api/company/_requests");
 const { userDelete, userUpdate } = require("../api/user/_requests");
 const { userCreate, userActivate, userLogin } = require("../api/auth/_requests");
 const { companyCreate } = require('../api/company/_requests');
+const { publicationsList, publicationDelete, publicationCreate } = require("../api/publication/_requests");
 const API_URL = 'https://enduring-server.herokuapp.com/v3/graphql';
 
 //USER REGISTER
@@ -386,56 +387,19 @@ async function findProblemByTitle(title, accessToken) {
 async function createPublication(
   {
     title= "Default Title",
-    description= "test1",
-    content= "test2",
-    accessToken
-  }) {
-  const queryData = JSON.stringify({
-    query: `mutation PublicationCreate($values: PublicationInput) {
-  publicationCreate(values: $values) {
-    _id
-    title
-    description
-    content
-    image
-    owner {
-      _id
-      firstName
-      lastName
-      image
-      __typename
-    }
-    likes {
-      _id
-      firstName
-      lastName
-      image
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}`,
-    variables: {
-      values:
-        {
-          title,
-          description,
-          content,
-        }
-    }
-  });
+    description= "Test description",
+    content= "Test Content",
+    image = 'https://image.shutterstock.com/image-vector/check-back-soon-hand-lettering-600w-1379832464.jpg'
+  },  accessToken) {
 
-  const {data} = await axios({
-    method: 'post',
-    url: API_URL,
-    data: queryData,
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${ accessToken }`
-    }
-  })
+  const values = {
+    title,
+    description,
+    content,
+    image
+  };
+
+  const { data } = await publicationCreate(values, accessToken);
   if (data.errors) {
     return {errors: data.errors}
   } else {
@@ -527,6 +491,15 @@ async function userPasswordResetRequest(email, accessToken) {
   }
 }
 
+const deleteUserPublications = async (userID, accessToken) => {
+  const { data } = await publicationsList(accessToken);
+  const publications = await data.data.publications.filter(el => el.owner !== null && el.owner._id === userID);
+
+  for (let el of publications) {
+    await publicationDelete(el._id, accessToken);
+  }
+};
+
 module.exports = {
   registerUser,
   registerActivation,
@@ -541,68 +514,6 @@ module.exports = {
   deleteCompany,
   deleteUser,
   userLogoutAPI,
-  updateUser
+  updateUser,
+  deleteUserPublications
 }
-
-// const runRequests = async () => {
-//   // 1. Register a user
-//   const email = `testUser${Date.now()}@gmail.com`;
-//   console.log(email);
-//   const password = 'testUser1234!';
-//   const userRegisterRes = await registerUser(email, password);
-//   console.log(userRegisterRes.activationLinkId);
-//
-//   // 2. Activate the user
-//   const userActivateRes = await registerActivation(userRegisterRes.activationLinkId);
-//   console.log(userActivateRes.activationString);
-//
-//   // 3. Login the user
-//   const userLoginRes = await userLoginAPI(email, password);
-//   console.log(userLoginRes.accessToken);
-//   const token = userLoginRes.accessToken;
-//   const userID = userLoginRes.userID;
-//
-//   // 4. Create a company
-//   const companyID = await createCompanyAndGetID({ title: 'Company' + Date.now(), description: 'Maria', accessToken: token });
-//   console.log(companyID);
-//
-//   // 5. Create 11 problems for the company from step 4
-//   const problemTitle = 'New Problem' + Date.now();
-//   const problemTitlesArray = [];
-//   for (let i = 0; i < 11 ; i++) {
-//     problemTitlesArray.push(problemTitle + i);
-//     await createProblem({
-//       title: problemTitle + i,
-//       companyId: companyID,
-//       jobTitle: 'Xperd',
-//       accessToken: token
-//     });
-//   }
-//
-//   // 6. Get problems ids created at step 5
-//   const problemsArray = [];
-//   for (let title of problemTitlesArray) {
-//     problemsArray.push(await findProblemByTitle(title, token));
-//   }
-//
-//   // 7. Delete the problems from step 5
-//   for (let problem of problemsArray) {
-//     const problemDeleteRes = await deleteProblem({ problemID: problem._id, accessToken: token });
-//   }
-//
-//   // 8. Login as admin
-//   const adminLoginRes = await userLoginAPI(ADMIN_EMAIL, ADMIN_PASSWORD);
-//   console.log(adminLoginRes.accessToken);
-//   const adminToken = adminLoginRes.accessToken;
-//
-//   // 9. Delete the company from step 4
-//   const companyDeleteRes = await deleteCompany({companyID: companyID, accessToken: adminToken});
-//   console.log(companyDeleteRes);
-//
-//   // 10. Delete the user from step 1
-//   const userDeleteRes = await deleteUser({userId: userID, accessToken: adminToken});
-//   console.log(userDeleteRes);
-// }
-//
-// runRequests();
-
