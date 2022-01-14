@@ -50,9 +50,9 @@ describe('View User Card', () => {
         await expect(actualUserLanguages).toEqual(expectedUserLanguages);
     });
 
-    xit('Verify that the User About field is displayed as expected', async () => {
+    it('Verify that the User About field is displayed as expected', async () => {
         await expect(UserViewPage.userAbout).toBeDisplayed();
-        const expectedUserAbout = `${values.about}`;
+        const expectedUserAbout = `About: ${values.about}`;
         const userAboutLabel = await UserViewPage.labelUserAbout;
         const actualUserAbout = await userAboutLabel.getText();
         await expect(actualUserAbout).toEqual(expectedUserAbout);

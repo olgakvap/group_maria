@@ -18,7 +18,7 @@ class UserViewPage extends Page {
         return $('//b[contains(text(),"About:")]');
     }
     get labelUserAbout() {
-        return $('//p[contains(@class, "css-18m8r0v")]/div/b[contains(text(),"About:")]');
+        return $('//p[contains(@class, "css-18m8r0v")]/div/b[contains(text(), "About:")]/..');
     }
     get userLevel() {
         return $('//b[contains(text(),"Level:")]');
