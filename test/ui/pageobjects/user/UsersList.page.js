@@ -5,9 +5,7 @@ class UsersListPage extends Page {
 
     navBar = new NavBar();
 
-    get userNameLink() {
-        return $(`(//*[@id="root"]/div`);
-    }
+    get userNameLink() { return $(`(//a[@class="linked-text"])[1]/div`); }
     get userFullNameText() {
         return $(`(//div[@class="text-truncate"])[1]/b`);
     }
