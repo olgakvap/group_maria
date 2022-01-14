@@ -51,7 +51,7 @@ describe('Creating Problem', () => {
         expect(foundRowsCount).toEqual(0);
     });
 
-    it('Create new problem with filters for Content field', async () => {
+    xit('Create new problem with filters for Content field', async () => {
         const inputValueTitle = Date.now();
         const inputValueContent = "anytext";
 
