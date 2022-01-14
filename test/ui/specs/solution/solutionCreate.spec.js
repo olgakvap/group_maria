@@ -54,8 +54,7 @@ describe('E2E test - create solution', () => {
         const actualProblemTitle = await ProblemPage.headerTitleProblem.getText();
         await expect(actualProblemTitle).toEqual(expectedProblemTitle);
     });
-
-        it('Should create solution with default data', async () => {
+        xit('Should create solution with default data', async () => {
             await ProblemPage.btnAddNewSolution.click();
             await ProblemPage.btnLastSolution.waitForDisplayed({timeout: 5000});
             await ProblemPage.btnLastSolution.click();
@@ -64,7 +63,7 @@ describe('E2E test - create solution', () => {
             await ProblemPage.textBoxLastCreatedSolution.waitForDisplayed({timeout: 7000});
             const textSolution = await lastCreatedSolution.getText();
             await expect(ProblemPage.btnEditSolution).toBeDisplayed();
-            //await expect(textSolution).toEqual("'hello world!'");
+            await expect(textSolution).toEqual("'hello world!'");
         });
 
         after('CLEANUP', async () => {
